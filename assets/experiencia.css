@@ -1,0 +1,400 @@
+/* LA NAVE · experiencia v2 — travesía cinematográfica, Muro de los 258,
+   cuenta regresiva y barra de zarpe. Extiende styles.css; mismos tokens. */
+
+/* ---------- utilidades ---------- */
+
+.sr-solo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* tarjetas de ficha sobre banda clara */
+.stat-card-luz { border-color: var(--hairline-light); }
+.stat-card-luz:hover { border-color: rgba(184, 134, 47, 0.5); background: rgba(184, 134, 47, 0.05); }
+.stat-card-luz .stat-figure { color: var(--ink); }
+.stat-card-luz .stat-figure.stat-accent { color: var(--naranja); }
+
+/* ---------- hero: plano de fondo + chips vivos ---------- */
+
+.hero-plano {
+  position: absolute;
+  right: clamp(-6rem, -2vw, 0rem);
+  bottom: -3rem;
+  width: min(74vw, 54rem);
+  height: auto;
+  opacity: 0.055;
+  pointer-events: none;
+}
+.hero-plano path {
+  fill: none;
+  stroke: var(--bronce);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 2.8rem;
+}
+.chip {
+  padding: 0.55rem 1.15rem;
+  border: 1px solid var(--hairline-dark);
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--piedra);
+  background: color-mix(in srgb, var(--carbon-deep) 55%, transparent);
+}
+.chip strong {
+  color: var(--naranja);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- travesía cinematográfica ---------- */
+
+.travesia {
+  position: relative;
+  background:
+    radial-gradient(80rem 46rem at 50% 0%, rgba(184, 134, 47, 0.08), transparent 62%),
+    var(--carbon);
+  color: var(--hueso);
+  padding: var(--space-band) clamp(1.25rem, 4vw, 3rem);
+}
+
+.t-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-linea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(244, 241, 234, 0.07);
+  display: none;
+}
+.t-linea i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--bronce), var(--naranja));
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+.t-svg {
+  width: min(100%, 58rem);
+  height: auto;
+}
+
+.t-captions {
+  width: min(100%, 46rem);
+  text-align: center;
+}
+.t-caption { margin-top: 2.2rem; }
+.t-acto {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronce);
+  margin-bottom: 0.75rem;
+}
+.t-caption p {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.15rem + 1.8vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.22;
+  color: var(--blanco);
+}
+.t-caption em {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.05rem, 0.95rem + 0.7vw, 1.4rem);
+  margin-top: 0.55rem;
+  color: color-mix(in srgb, var(--hueso) 74%, transparent);
+}
+.t-caption .btn { margin-top: 1.5rem; }
+
+/* — modo cine (lo activa JS cuando hay movimiento permitido) — */
+.travesia.es-cine {
+  height: 460vh;
+  padding: 0;
+}
+.es-cine .t-pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  /* fondo despejado: el CTA del acto final nunca queda bajo la barra de zarpe */
+  padding: 4.6rem clamp(1.25rem, 4vw, 3rem) 6.75rem;
+}
+.es-cine .t-linea { display: block; }
+.es-cine .t-svg { max-height: 56svh; }
+.es-cine .t-captions {
+  position: relative;
+  min-height: 9.5rem;
+  margin-top: 1.4rem;
+}
+.es-cine .t-caption {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
+  pointer-events: none;
+}
+.es-cine .t-caption.es-activa {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* — trazos y materia de la escena — */
+.e-suelo { stroke: #4A473F; stroke-width: 1; fill: none; }
+.e-marco { stroke: var(--bronce); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.e-col { stroke: var(--bronce); stroke-width: 1.3; stroke-linecap: round; }
+.e-fino { stroke: var(--piedra); stroke-width: 1; fill: none; }
+.e-oculta { stroke: var(--bronce); stroke-width: 1; stroke-dasharray: 5 6; fill: none; }
+.e-clima { stroke: #9DB4C0; stroke-width: 1.4; fill: none; stroke-linecap: round; }
+.e-texto {
+  fill: var(--piedra);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.e-etiqueta {
+  fill: var(--bronce);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+.e-estrella { fill: var(--hueso); opacity: 0.4; }
+.t-persona circle { fill: var(--hueso); }
+.t-persona path { stroke: var(--hueso); stroke-width: 5; stroke-linecap: round; fill: none; }
+
+/* ---------- el Muro de los 258 ---------- */
+
+.muro-figura {
+  margin-top: var(--space-block);
+  text-align: center;
+}
+.muro-svg {
+  width: min(100%, 30rem);
+  height: auto;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.celda {
+  fill: rgba(244, 241, 234, 0.05);
+  stroke: rgba(244, 241, 234, 0.14);
+  stroke-width: 1;
+}
+.celda:not(.es-tomada) {
+  cursor: pointer;
+  transition: fill var(--dur) var(--ease-out), stroke var(--dur) var(--ease-out);
+}
+.celda:not(.es-tomada):hover {
+  stroke: var(--naranja);
+  fill: rgba(242, 145, 0, 0.14);
+}
+.celda.es-tomada {
+  fill: url(#gradLugar);
+  stroke: rgba(242, 145, 0, 0.4);
+  opacity: 0.12;
+  transition: opacity 620ms var(--ease-out);
+}
+.celda.es-tomada.es-viva { opacity: 1; }
+
+.muro-puerta { stroke: var(--bronce); stroke-width: 1.4; opacity: 0.85; }
+.muro-umbral { stroke: var(--naranja); stroke-width: 2; opacity: 0.5; }
+
+.muro-leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem 1.6rem;
+  margin-top: 1.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--piedra);
+}
+.muro-leyenda span { display: inline-flex; align-items: center; gap: 0.5rem; }
+.muro-leyenda i {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+.leyenda-tomado i { background: linear-gradient(180deg, var(--naranja), var(--bronce)); }
+.leyenda-libre i { border: 1px solid rgba(244, 241, 234, 0.35); }
+.leyenda-puerta i { border-bottom: 2px solid var(--naranja); border-radius: 0; height: 8px; }
+
+.muro-nota {
+  margin-top: 1.6rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem);
+  color: color-mix(in srgb, var(--hueso) 80%, transparent);
+}
+.muro-cta { text-align: center; margin-top: 2.2rem; }
+
+/* — hitos sobre la barra de avance — */
+.progress-track { position: relative; overflow: visible; }
+.progress-track .progress-fill { position: relative; z-index: 1; }
+.hito {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--carbon);
+  border: 1px solid rgba(244, 241, 234, 0.3);
+  z-index: 2;
+}
+.hito::after {
+  content: attr(data-hito) "%";
+  position: absolute;
+  top: 0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--piedra) 75%, transparent);
+}
+.hito.es-logrado {
+  background: var(--naranja);
+  border-color: var(--naranja);
+}
+.hito.es-logrado::after { color: var(--naranja); }
+
+/* ---------- barra de zarpe (cierre siempre a la vista) ---------- */
+
+.zarpe {
+  position: fixed;
+  left: 50%;
+  bottom: max(0.9rem, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.5rem 0.55rem 0.5rem 1.2rem;
+  border: 1px solid var(--hairline-dark);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--carbon-deep) 90%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 44px -18px rgba(0, 0, 0, 0.55);
+  transform: translate(-50%, 160%);
+  transition: transform 480ms var(--ease-out);
+}
+.zarpe.es-visible { transform: translate(-50%, 0); }
+
+.zarpe .btn { white-space: nowrap; }
+.zarpe-txt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--piedra);
+  white-space: nowrap;
+}
+.zarpe-txt strong {
+  color: var(--hueso);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+.zarpe-cerrar {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--piedra);
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.45rem 0.55rem;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+}
+.zarpe-cerrar:hover { color: var(--hueso); }
+
+/* ---------- botón fantasma (compartir) + banda con borde ---------- */
+
+.btn-ghost {
+  display: inline-block;
+  padding: 0.85rem 1.9rem;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+}
+.btn-ghost:hover {
+  border-color: var(--bronce);
+  color: var(--bronce);
+  background: rgba(184, 134, 47, 0.06);
+}
+
+.band-borde { border-top: 1px solid var(--hairline-light); }
+
+.cta-fila {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.2rem;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 700px) {
+  .es-cine .t-svg { max-height: 42svh; }
+  .es-cine .t-captions { min-height: 11.5rem; }
+  .hero-plano { width: 120vw; right: -20vw; opacity: 0.045; }
+  .zarpe { width: calc(100% - 1.6rem); justify-content: space-between; gap: 0.55rem; padding: 0.4rem 0.4rem 0.4rem 0.85rem; }
+  .zarpe-txt { font-size: 0.6rem; letter-spacing: 0.07em; }
+  .zarpe .btn-sm { padding: 0.5rem 0.85rem; font-size: 0.64rem; }
+  .zarpe-cerrar { padding: 0.35rem 0.4rem; }
+  .hito::after { display: none; }
+}
+
+/* ---------- movimiento reducido ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .t-caption, .celda, .celda.es-tomada, .zarpe { transition: none; }
+  .zarpe { transform: translate(-50%, 0); }
+  .zarpe:not(.es-visible) { display: none; }
+}

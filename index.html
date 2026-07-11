@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>La Nave — Toma tu lugar · Más Alto</title>
-  <meta name="description" content="El primer espacio propio de nuestra comunidad. Fondo Fundadores: 258 lugares, cierre firme el 31 de julio de 2026. Toma tu lugar en La Nave.">
+  <meta name="description" content="El primer espacio propio de nuestra comunidad. Fondo Fundadores: 258 lugares, avance en vivo, cierre firme el 31 de julio de 2026. Toma tu lugar en La Nave.">
   <link rel="canonical" href="https://lanave.comunidadmasalto.org/">
   <meta name="theme-color" content="#2B2A26">
 
@@ -12,7 +12,7 @@
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="Más Alto · La Nave">
   <meta property="og:title" content="La Nave — Toma tu lugar">
-  <meta property="og:description" content="El primer espacio propio de nuestra comunidad. 258 lugares · cierre firme 31 de julio de 2026.">
+  <meta property="og:description" content="El primer espacio propio de nuestra comunidad. 258 lugares · avance en vivo · cierre firme 31 de julio de 2026.">
   <meta property="og:url" content="https://soyedzam.github.io/lanave-masalto/">
   <meta property="og:image" content="https://soyedzam.github.io/lanave-masalto/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -26,6 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/experiencia.css">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -39,105 +40,250 @@
       <span class="lockup-divider" aria-hidden="true"></span>
       <span class="lockup-sub">La Nave</span>
     </a>
-    <a class="btn btn-sm" href="#tomar">Toma tu lugar</a>
+    <a class="btn btn-sm" href="#tomar" data-cta="header">Toma tu lugar</a>
   </header>
 
   <main id="contenido">
 
     <!-- ============ HERO ============ -->
     <section class="hero band band-dark" id="inicio" aria-labelledby="hero-heading">
+      <svg class="hero-plano" viewBox="0 0 560 310" aria-hidden="true" focusable="false">
+        <path d="M60 290 L60 165 L170 82 L280 165 L280 290 M170 82 L450 82 M280 165 L540 165 L540 290 M450 82 L540 165 M60 165 L340 165 M340 165 L340 290" />
+      </svg>
       <div class="wrap hero-inner">
         <p class="eyebrow"><span class="diamond" aria-hidden="true">◆</span> Levanta Más Alto · Fondo Fundadores</p>
         <h1 id="hero-heading" class="hero-title">La&nbsp;Nave</h1>
         <p class="hero-lede">El primer espacio propio de nuestra comunidad. Uno que es nuestro&nbsp;— para los próximos 15&nbsp;años.</p>
         <div class="hero-actions">
-          <a class="btn btn-lg" href="#tomar">Toma tu lugar en La Nave</a>
-          <a class="link-ghost" href="#avance">Ver el avance ↓</a>
+          <a class="btn btn-lg" href="#tomar" data-cta="hero">Toma tu lugar en La Nave</a>
+          <a class="link-ghost" href="#travesia">Mira cómo se levanta ↓</a>
         </div>
-        <p class="hero-meta">258 lugares · cierre firme 31 de julio de 2026</p>
+        <div class="chips" role="status">
+          <p class="chip" id="js-chip-avance">258 lugares</p>
+          <p class="chip" id="js-chip-cierre">cierre firme <strong>31 de julio</strong></p>
+        </div>
       </div>
     </section>
 
-    <!-- ============ LA VISIÓN ============ -->
-    <section class="band band-light" id="vision" aria-labelledby="vision-heading">
-      <div class="wrap wrap-narrow reveal">
-        <p class="label">La visión</p>
-        <h2 id="vision-heading" class="title-xl">Durante años crecimos<br>en espacios prestados.</h2>
-        <p class="body-lg">Comunidad real. Fe real. Relaciones que duran. Todo en lugares que no eran nuestros. La&nbsp;Nave cambia eso: un espacio propio, pensado para nuestra gente por los próximos 10 a 15&nbsp;años. Y no la levanta una persona&nbsp;— la levantamos entre todos.</p>
+    <!-- ============ LA TRAVESÍA (el scroll la construye) ============ -->
+    <section class="travesia" id="travesia" aria-labelledby="travesia-heading">
+      <h2 id="travesia-heading" class="sr-solo">La travesía: así se levanta La Nave</h2>
+      <div class="t-pin">
+        <div class="t-linea" aria-hidden="true"><i></i></div>
+
+        <svg class="t-svg" viewBox="0 0 880 540" role="img" aria-labelledby="escena-titulo escena-desc">
+          <title id="escena-titulo">La Nave construyéndose</title>
+          <desc id="escena-desc">Dibujo de plano arquitectónico: sobre un terreno se levanta la estructura de 18 por 18 metros, se cierra la cubierta climatizada y el espacio se llena de luz cálida y de personas.</desc>
+          <defs>
+            <linearGradient id="gradPuerta" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#F29100" stop-opacity=".85"/>
+              <stop offset="1" stop-color="#B8862F" stop-opacity=".25"/>
+            </linearGradient>
+            <linearGradient id="gradRidge" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#F29100" stop-opacity="0"/>
+              <stop offset=".5" stop-color="#F29100" stop-opacity=".75"/>
+              <stop offset="1" stop-color="#F29100" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- cielo -->
+          <g aria-hidden="true">
+            <circle class="e-estrella" cx="120" cy="92" r="1.8"/>
+            <circle class="e-estrella" cx="214" cy="58" r="1.3"/>
+            <circle class="e-estrella" cx="332" cy="106" r="1.1"/>
+            <circle class="e-estrella" cx="522" cy="66" r="1.8"/>
+            <circle class="e-estrella" cx="702" cy="98" r="1.3"/>
+            <circle class="e-estrella" cx="792" cy="56" r="1.1"/>
+            <circle class="e-estrella" cx="622" cy="38" r="1"/>
+            <circle class="e-estrella" cx="86" cy="168" r="1"/>
+          </g>
+
+          <!-- ACTO I · el terreno -->
+          <g aria-hidden="true">
+            <path class="e-suelo" data-anim="draw" data-ini=".02" data-fin=".10" d="M120 440 L760 440"/>
+            <path class="e-suelo" data-anim="draw" data-ini=".05" data-fin=".13" opacity=".55" d="M170 474 L710 474"/>
+            <path class="e-suelo" data-anim="draw" data-ini=".08" data-fin=".16" opacity=".3" d="M225 502 L655 502"/>
+            <path class="e-suelo" data-anim="draw" data-ini=".10" data-fin=".18" opacity=".4" d="M120 440 L225 502 M280 440 L365 502 M470 440 L470 502 M600 440 L520 502 M760 440 L655 502"/>
+            <g class="e-fino" data-anim="fade" data-ini=".14" data-fin=".20" data-op=".8">
+              <path d="M200 440 L200 426 M420 440 L420 426 M520 440 L520 426 M740 440 L740 426"/>
+              <circle cx="200" cy="423" r="1.6" fill="#808A81" stroke="none"/>
+              <circle cx="420" cy="423" r="1.6" fill="#808A81" stroke="none"/>
+              <circle cx="520" cy="423" r="1.6" fill="#808A81" stroke="none"/>
+              <circle cx="740" cy="423" r="1.6" fill="#808A81" stroke="none"/>
+            </g>
+            <g data-anim="fade" data-ini=".16" data-fin=".24" data-op=".9">
+              <path class="e-fino" d="M200 458 L420 458 M200 452 L200 464 M420 452 L420 464"/>
+              <text class="e-texto" x="310" y="482" text-anchor="middle">18 M</text>
+            </g>
+            <g data-anim="fade" data-ini=".18" data-fin=".26" data-op=".9">
+              <path class="e-fino" d="M426 500 L746 500 M426 494 L426 506 M746 494 L746 506"/>
+              <text class="e-texto" x="586" y="524" text-anchor="middle">18 M</text>
+            </g>
+          </g>
+
+          <!-- ACTO II · la estructura -->
+          <g aria-hidden="true">
+            <line class="e-col" data-anim="draw" data-ini=".22" data-fin=".29" x1="200" y1="440" x2="200" y2="284"/>
+            <line class="e-col" data-anim="draw" data-ini=".24" data-fin=".31" x1="255" y1="440" x2="255" y2="284"/>
+            <line class="e-col" data-anim="draw" data-ini=".26" data-fin=".33" x1="310" y1="440" x2="310" y2="284"/>
+            <line class="e-col" data-anim="draw" data-ini=".28" data-fin=".35" x1="365" y1="440" x2="365" y2="284"/>
+            <line class="e-col" data-anim="draw" data-ini=".30" data-fin=".37" x1="420" y1="440" x2="420" y2="284"/>
+            <line class="e-col" data-anim="draw" data-ini=".31" data-fin=".38" opacity=".7" x1="500" y1="440" x2="500" y2="284"/>
+            <line class="e-col" data-anim="draw" data-ini=".33" data-fin=".40" opacity=".7" x1="580" y1="440" x2="580" y2="284"/>
+            <line class="e-col" data-anim="draw" data-ini=".35" data-fin=".42" opacity=".7" x1="660" y1="440" x2="660" y2="284"/>
+            <path class="e-marco" data-anim="draw" data-ini=".34" data-fin=".46" d="M200 440 L200 280 L310 190 L420 280 L420 440"/>
+            <path class="e-marco" data-anim="draw" data-ini=".40" data-fin=".48" d="M420 280 L740 280"/>
+            <path class="e-marco" data-anim="draw" data-ini=".38" data-fin=".48" opacity=".85" d="M520 280 L630 190 L740 280"/>
+            <path class="e-marco" data-anim="draw" data-ini=".42" data-fin=".50" d="M310 190 L630 190"/>
+            <path class="e-marco" data-anim="draw" data-ini=".42" data-fin=".50" d="M740 280 L740 440"/>
+            <path class="e-oculta" data-anim="fade" data-ini=".44" data-fin=".52" data-op=".4" d="M200 280 L520 280 M520 280 L520 440"/>
+          </g>
+
+          <!-- ACTO III · la cubierta -->
+          <g aria-hidden="true">
+            <path class="e-marco" data-anim="draw" data-ini=".50" data-fin=".56" opacity=".5" stroke-width="1" d="M337.5 212.5 L657.5 212.5"/>
+            <path class="e-marco" data-anim="draw" data-ini=".52" data-fin=".58" opacity=".5" stroke-width="1" d="M365 235 L685 235"/>
+            <path class="e-marco" data-anim="draw" data-ini=".54" data-fin=".60" opacity=".5" stroke-width="1" d="M392.5 257.5 L712.5 257.5"/>
+            <path class="e-marco" data-anim="draw" data-ini=".55" data-fin=".61" opacity=".3" stroke-width="1" d="M282.5 212.5 L602.5 212.5"/>
+            <polygon data-anim="fade" data-ini=".56" data-fin=".66" data-op=".10" fill="#B8862F" points="310 190 630 190 740 280 420 280"/>
+            <polygon data-anim="fade" data-ini=".58" data-fin=".68" data-op=".05" fill="#B8862F" points="310 190 630 190 520 280 200 280"/>
+            <polygon data-anim="fade" data-ini=".62" data-fin=".70" data-op=".03" fill="#F4F1EA" points="200 440 200 280 310 190 420 280 420 440"/>
+            <polygon data-anim="fade" data-ini=".63" data-fin=".71" data-op=".02" fill="#F4F1EA" points="420 280 740 280 740 440 420 440"/>
+            <path class="e-clima" data-anim="draw" data-ini=".66" data-fin=".72" opacity=".4" d="M338 246 q42 -14 84 0"/>
+            <path class="e-clima" data-anim="draw" data-ini=".68" data-fin=".74" opacity=".3" d="M474 258 q42 -14 84 0"/>
+          </g>
+
+          <!-- ACTO IV · la vida -->
+          <g aria-hidden="true">
+            <path class="e-marco" data-anim="draw" data-ini=".74" data-fin=".79" stroke-width="1.2" d="M285 440 L285 362 L335 362 L335 440"/>
+            <rect data-anim="fade" data-ini=".77" data-fin=".84" data-op=".85" x="286" y="363" width="48" height="77" fill="url(#gradPuerta)"/>
+            <g data-anim="fade" data-ini=".80" data-fin=".87" data-op=".5">
+              <rect x="505" y="330" width="24" height="32" fill="url(#gradPuerta)"/>
+              <rect x="585" y="330" width="24" height="32" fill="url(#gradPuerta)"/>
+              <rect x="665" y="330" width="24" height="32" fill="url(#gradPuerta)"/>
+            </g>
+            <ellipse data-anim="fade" data-ini=".82" data-fin=".90" data-op=".16" cx="310" cy="442" rx="46" ry="8" fill="#F29100"/>
+
+            <g transform="translate(235 432)"><g class="t-persona" data-anim="rise" data-ini=".80" data-fin=".86"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(262 430)"><g class="t-persona" data-anim="rise" data-ini=".815" data-fin=".875"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(298 433)"><g class="t-persona" data-anim="rise" data-ini=".83" data-fin=".89"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(322 432) scale(.72)"><g class="t-persona" data-anim="rise" data-ini=".845" data-fin=".905"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(352 432)"><g class="t-persona" data-anim="rise" data-ini=".86" data-fin=".92"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(384 430)"><g class="t-persona" data-anim="rise" data-ini=".875" data-fin=".935"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(408 433)"><g class="t-persona" data-anim="rise" data-ini=".89" data-fin=".95"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(480 429) scale(.75)"><g class="t-persona" data-anim="rise" data-ini=".88" data-fin=".94" data-op=".5"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(560 428) scale(.75)"><g class="t-persona" data-anim="rise" data-ini=".895" data-fin=".955" data-op=".5"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(640 429) scale(.75)"><g class="t-persona" data-anim="rise" data-ini=".91" data-fin=".97" data-op=".5"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+            <g transform="translate(700 428) scale(.75)"><g class="t-persona" data-anim="rise" data-ini=".925" data-fin=".985" data-op=".5"><circle cy="-12" r="3.6"/><path d="M0 -7 L0 5"/></g></g>
+
+            <path data-anim="fade" data-ini=".86" data-fin=".93" data-op=".55" d="M310 190 L630 190" stroke="url(#gradRidge)" stroke-width="4" fill="none"/>
+            <text class="e-etiqueta" data-anim="fade" data-ini=".88" data-fin=".95" x="470" y="152" text-anchor="middle">LA NAVE · 324 M²</text>
+          </g>
+        </svg>
+
+        <div class="t-captions">
+          <div class="t-caption es-activa">
+            <span class="t-acto">I · El terreno</span>
+            <p>Durante años crecimos en espacios prestados.<em>Comunidad real, fe real — en lugares que no eran nuestros.</em></p>
+          </div>
+          <div class="t-caption">
+            <span class="t-acto">II · La estructura</span>
+            <p>Eso cambia ahora.<em>Una estructura de 18 × 18 metros se levanta.</em></p>
+          </div>
+          <div class="t-caption">
+            <span class="t-acto">III · La cubierta</span>
+            <p>Cerrada y climatizada.<em>Pensada para nuestra gente, por los próximos 10 a 15 años.</em></p>
+          </div>
+          <div class="t-caption">
+            <span class="t-acto">IV · La vida</span>
+            <p>No es una carpa. No es metros cuadrados.<em>Es donde nuestros hijos van a crecer.</em></p>
+          </div>
+          <div class="t-caption">
+            <span class="t-acto">Fondo Fundadores</span>
+            <p>258 lugares la levantan.<em>Uno lleva tu nombre.</em></p>
+            <a class="btn" href="#tomar" data-cta="travesia">Toma tu lugar</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ QUÉ ES ============ -->
-    <section class="band band-dark" id="que-es" aria-labelledby="quees-heading">
+    <!-- ============ LA FICHA ============ -->
+    <section class="band band-light" id="proyecto" aria-labelledby="proyecto-heading">
       <div class="wrap reveal">
-        <p class="label label-center">Qué es La Nave</p>
-        <h2 id="quees-heading" class="title-xl title-center">No es una carpa.<br>Es nuestro lugar.</h2>
-
-        <figure class="schematic">
-          <svg viewBox="0 0 880 420" role="img" aria-labelledby="schematic-title" class="schematic-svg">
-            <title id="schematic-title">Esquema arquitectónico de La Nave: estructura de 18 por 18 metros con cubierta a dos aguas</title>
-            <defs>
-              <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#B8862F" stop-opacity=".55"/>
-                <stop offset="1" stop-color="#B8862F" stop-opacity=".1"/>
-              </linearGradient>
-            </defs>
-            <!-- piso / retícula en perspectiva -->
-            <g stroke="#4A473F" stroke-width="1">
-              <path d="M120 330 L760 330"/>
-              <path d="M170 355 L710 355" opacity=".6"/>
-              <path d="M220 380 L660 380" opacity=".35"/>
-              <path d="M120 330 L220 380 M280 330 L360 380 M440 330 L440 380 M600 330 L520 380 M760 330 L660 380" opacity=".45"/>
-            </g>
-            <!-- volumen: nave a dos aguas en axonometría -->
-            <g fill="none" stroke="#B8862F" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-              <!-- cara frontal -->
-              <path d="M240 330 L240 210 L340 140 L440 210 L440 330 Z"/>
-              <!-- aristas de fuga visibles -->
-              <path d="M340 140 L640 140 M440 210 L740 210 M440 330 L740 330 M740 330 L740 210 L640 140"/>
-              <!-- aristas ocultas (convención de plano) -->
-              <g stroke-width="1" stroke-dasharray="5 6" opacity=".5">
-                <path d="M240 210 L540 210 M240 330 L540 330 M540 330 L540 210 L640 140"/>
-              </g>
-              <!-- costillas de la cubierta -->
-              <g stroke-width="1" opacity=".5">
-                <path d="M365 158 L665 158 M390 175 L690 175 M415 193 L715 193"/>
-              </g>
-              <!-- puerta -->
-              <path d="M320 330 L320 268 L360 268 L360 330" stroke-width="1.2" opacity=".8"/>
-            </g>
-            <!-- brillo del caballete -->
-            <path d="M340 140 L640 140" stroke="url(#glow)" stroke-width="4" opacity=".5"/>
-            <!-- cotas -->
-            <g stroke="#808A81" stroke-width="1" fill="none">
-              <path d="M240 352 L440 352" marker-start="none"/>
-              <path d="M240 346 L240 358 M440 346 L440 358"/>
-              <path d="M462 330 L562 380" opacity=".9"/>
-              <path d="M456 324 L468 336 M556 374 L568 386"/>
-            </g>
-            <g fill="#808A81" font-family="Inter, sans-serif" font-size="13" letter-spacing="2">
-              <text x="340" y="374" text-anchor="middle">18 M</text>
-              <text x="540" y="368" text-anchor="middle" transform="rotate(26 540 368)">18 M</text>
-              <text x="340" y="120" text-anchor="middle" fill="#B8862F" font-size="12">LA NAVE · 324 M²</text>
-            </g>
-          </svg>
-          <figcaption class="schematic-caption">Esquema del proyecto · estructura climatizada 18&nbsp;×&nbsp;18&nbsp;m</figcaption>
-        </figure>
-
+        <p class="label label-center">El proyecto</p>
+        <h2 id="proyecto-heading" class="title-xl title-center">324 m² que sí son nuestros.</h2>
         <ul class="stats" role="list">
-          <li class="stat-card">
+          <li class="stat-card stat-card-luz">
             <span class="stat-figure stat-accent">324&nbsp;m²</span>
             <span class="stat-label">Superficie climatizada</span>
           </li>
-          <li class="stat-card">
+          <li class="stat-card stat-card-luz">
             <span class="stat-figure">18&nbsp;×&nbsp;18</span>
             <span class="stat-label">Metros de estructura</span>
           </li>
-          <li class="stat-card">
+          <li class="stat-card stat-card-luz">
             <span class="stat-figure">10–15</span>
             <span class="stat-label">Años por delante</span>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ============ EL MURO DE LOS 258 ============ -->
+    <section class="band band-dark" id="muro" aria-labelledby="muro-heading">
+      <div class="wrap reveal">
+        <p class="label label-center">El avance, en vivo</p>
+        <h2 id="muro-heading" class="title-xl title-center">El Muro de los 258.</h2>
+        <p class="body-lg title-center" style="max-width:52ch;margin-inline:auto;text-align:center;">Cada celda es un lugar. Juntas dibujan la fachada de La&nbsp;Nave — y se encienden de abajo hacia arriba, como se levanta un muro de verdad. La puerta queda abierta: por ahí vamos a entrar todos.</p>
+
+        <figure class="muro-figura">
+          <div id="js-muro"></div>
+          <figcaption class="muro-leyenda">
+            <span class="leyenda-tomado"><i aria-hidden="true"></i> Lugar tomado</span>
+            <span class="leyenda-libre"><i aria-hidden="true"></i> Disponible</span>
+            <span class="leyenda-puerta"><i aria-hidden="true"></i> La puerta abierta</span>
+          </figcaption>
+        </figure>
+        <p class="muro-nota" id="js-muro-nota">El muro se enciende con cada lugar tomado.</p>
+
+        <div id="avance">
+          <dl class="counters">
+            <div class="counter counter-accent">
+              <dd class="counter-figure" id="js-tomados">—</dd>
+              <dt class="counter-label">Tomados</dt>
+            </div>
+            <div class="counter">
+              <dd class="counter-figure" id="js-disponibles">—</dd>
+              <dt class="counter-label">Disponibles</dt>
+            </div>
+            <div class="counter">
+              <dd class="counter-figure" id="js-dias">—</dd>
+              <dt class="counter-label">Días</dt>
+            </div>
+            <div class="counter">
+              <dd class="counter-figure" id="js-ritmo">—</dd>
+              <dt class="counter-label">Ritmo / día</dt>
+            </div>
+          </dl>
+
+          <div class="progress" role="img" id="js-progress-wrap" aria-label="Avance del Fondo Fundadores">
+            <div class="progress-track">
+              <div class="progress-fill" id="js-progress"></div>
+              <span class="hito" data-hito="50" style="left:50%"></span>
+              <span class="hito" data-hito="75" style="left:75%"></span>
+              <span class="hito" data-hito="90" style="left:90%"></span>
+            </div>
+            <div class="progress-caption">
+              <span id="js-progress-text">— de 258 lugares</span>
+              <span class="progress-close">Cierre 31 jul 2026</span>
+            </div>
+          </div>
+          <p class="cut-note" id="js-corte"></p>
+        </div>
+
+        <p class="muro-cta">
+          <a class="btn btn-lg" href="#tomar" id="js-muro-cta" data-cta="muro">Toma el lugar #38</a>
+        </p>
       </div>
     </section>
 
@@ -166,44 +312,8 @@
       </div>
     </section>
 
-    <!-- ============ EL AVANCE ============ -->
-    <section class="band band-dark" id="avance" aria-labelledby="avance-heading">
-      <div class="wrap reveal">
-        <p class="label label-center">El avance</p>
-        <h2 id="avance-heading" class="title-xl title-center">Vamos levantándola, juntos.</h2>
-
-        <dl class="counters">
-          <div class="counter counter-accent">
-            <dd class="counter-figure" id="js-tomados">—</dd>
-            <dt class="counter-label">Tomados</dt>
-          </div>
-          <div class="counter">
-            <dd class="counter-figure" id="js-disponibles">—</dd>
-            <dt class="counter-label">Disponibles</dt>
-          </div>
-          <div class="counter">
-            <dd class="counter-figure" id="js-dias">—</dd>
-            <dt class="counter-label">Días</dt>
-          </div>
-          <div class="counter">
-            <dd class="counter-figure" id="js-ritmo">—</dd>
-            <dt class="counter-label">Ritmo / día</dt>
-          </div>
-        </dl>
-
-        <div class="progress" role="img" id="js-progress-wrap" aria-label="Avance del Fondo Fundadores">
-          <div class="progress-track"><div class="progress-fill" id="js-progress"></div></div>
-          <div class="progress-caption">
-            <span id="js-progress-text">— de 258 lugares</span>
-            <span class="progress-close">Cierre 31 jul 2026</span>
-          </div>
-        </div>
-        <p class="cut-note" id="js-corte"></p>
-      </div>
-    </section>
-
     <!-- ============ CÓMO TOMAR TU LUGAR ============ -->
-    <section class="band band-light" id="tomar" aria-labelledby="tomar-heading">
+    <section class="band band-light band-borde" id="tomar" aria-labelledby="tomar-heading">
       <div class="wrap reveal">
         <p class="label label-center">Cómo tomar tu lugar</p>
         <h2 id="tomar-heading" class="title-xl title-center">Tres pasos. Sin complicaciones.</h2>
@@ -227,7 +337,10 @@
         </ol>
 
         <div class="cta-block">
-          <a class="btn btn-lg" id="js-wa-cta" href="#tomar" hidden>Toma tu lugar por WhatsApp</a>
+          <div class="cta-fila">
+            <a class="btn btn-lg" id="js-wa-cta" href="#tomar" hidden data-cta="pasos">Toma tu lugar por WhatsApp</a>
+            <button class="btn-ghost" id="js-compartir" type="button">Compártelo con tu familia</button>
+          </div>
           <p class="cta-alt" id="js-cta-alt">Regístrate en los dos cultos dominicales o con tu líder de grupo — el equipo te acompaña con los detalles.</p>
           <p class="cta-url" id="js-url-display">masalto.org/lanave</p>
         </div>
@@ -247,11 +360,19 @@
           </details>
           <details class="faq-item">
             <summary>¿Hasta cuándo puedo participar?</summary>
-            <p>El Fondo Fundadores cierra el 31 de julio de 2026. Es una fecha firme: no se reabre.</p>
+            <p>El Fondo Fundadores cierra el 31 de julio de 2026 y no se reabre. No es una fecha para presionar: los eventos de agosto ya están en calendario y La Nave debe estar lista. Es la fecha en que empieza lo que sigue.</p>
           </details>
           <details class="faq-item">
             <summary>¿Puedo tomar mi lugar en parcialidades?</summary>
             <p>Sí. Puedes completarlo en una sola exhibición o en partes. El equipo te acompaña con los detalles.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cómo se realiza mi aportación?</summary>
+            <p>De forma directa y personal con el equipo: transferencia o efectivo, en una exhibición o en parcialidades. Al registrarte, un miembro del equipo te contacta y te acompaña paso a paso.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Quién está detrás de La Nave?</summary>
+            <p>Comunidad Más Alto: sus pastores fundadores, un equipo de proyecto dedicado y un consejo técnico de arquitectos e ingenieros que respalda los criterios de la estructura.</p>
           </details>
           <details class="faq-item">
             <summary>¿Para qué se usa La Nave?</summary>
@@ -262,14 +383,14 @@
     </section>
 
     <!-- ============ CIERRE ============ -->
-    <section class="band band-dark band-final" aria-labelledby="final-heading">
+    <section class="band band-dark band-final" id="final" aria-labelledby="final-heading">
       <div class="wrap wrap-narrow reveal">
         <svg class="final-peak" viewBox="0 0 48 34" aria-hidden="true" focusable="false">
           <path d="M31 0c-2.4 8.1-7.9 14.6-15.4 20.9L4 30.5c5.7-.9 11.6-3.4 16.5-7.1 1.5 2.9 2 6.4 1.4 10.6 6.1-4.3 10.9-10 13.4-16.5C37.8 11 36 4.4 31 0Z"/>
         </svg>
         <p class="final-brand">Más&thinsp;Alto</p>
         <h2 id="final-heading" class="final-title">Toma tu lugar<br>en La&nbsp;Nave.</h2>
-        <a class="btn btn-lg" id="js-wa-cta-final" href="#tomar">Toma tu lugar en La Nave</a>
+        <a class="btn btn-lg" id="js-wa-cta-final" href="#tomar" data-cta="final">Toma tu lugar en La Nave</a>
         <p class="cta-url cta-url-final" id="js-url-display-final">masalto.org/lanave</p>
       </div>
       <footer class="site-footer">
@@ -279,7 +400,14 @@
 
   </main>
 
+  <!-- barra de zarpe: el cierre siempre a la vista -->
+  <div class="zarpe" id="js-zarpe" role="region" aria-label="Cierre de campaña">
+    <p class="zarpe-txt">Cierra 31 jul · <strong data-cuenta>—</strong></p>
+    <a class="btn btn-sm" href="#tomar" id="js-zarpe-cta" data-cta="zarpe">Toma tu lugar</a>
+    <button class="zarpe-cerrar" id="js-zarpe-cerrar" type="button" aria-label="Ocultar barra de cierre">✕</button>
+  </div>
+
   <script src="assets/config.js"></script>
-  <script src="assets/main.js" defer></script>
+  <script type="module" src="assets/main.js"></script>
 </body>
 </html>

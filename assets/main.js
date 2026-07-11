@@ -1,152 +1,155 @@
-/* LA NAVE · lógica de página: avance calculado, contadores y CTA de WhatsApp. */
-(function () {
-  "use strict";
+/* LA NAVE · orquestador — une datos, travesía, muro, cuenta y medición. */
 
-  var cfg = window.LANAVE || {};
-  var MS_DIA = 86400000;
+import { estado, sincronizar } from "./datos.js";
+import { medir, medirAlVer } from "./medir.js";
+import { iniciarTravesia } from "./travesia.js";
+import { iniciarMuro } from "./muro.js";
+import { iniciarCuentaRegresiva, iniciarContadores, iniciarChips } from "./cuenta.js";
 
-  function fechaLocal(iso) {
-    // Fecha "civil" (sin zona): evita corrimientos de un día por UTC.
-    var p = (iso || "").split("-").map(Number);
-    return new Date(p[0], (p[1] || 1) - 1, p[2] || 1);
-  }
+const cfg = window.LANAVE || {};
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function hoyLocal() {
-    var n = new Date();
-    return new Date(n.getFullYear(), n.getMonth(), n.getDate());
-  }
-
-  function formatoCorte(iso) {
-    var meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio",
-                 "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-    var f = fechaLocal(iso);
-    return f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
-  }
-
-  // — Derivados del corte —
-  var meta = cfg.meta || 258;
-  var tomados = Math.max(0, Math.min(meta, cfg.tomados || 0));
-  var disponibles = meta - tomados;
-  var dias = Math.max(0, Math.round((fechaLocal(cfg.cierre) - hoyLocal()) / MS_DIA));
-  var ritmo = dias > 0 ? Math.ceil(disponibles / dias) : disponibles;
-  var pct = Math.round((tomados / meta) * 1000) / 10;
-
-  var valores = {
-    "js-tomados": tomados,
-    "js-disponibles": disponibles,
-    "js-dias": dias,
-    "js-ritmo": ritmo
-  };
-
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function pinta(id, valor) {
-    var el = document.getElementById(id);
-    if (el) el.textContent = String(valor);
-  }
-
-  function animaConteo(el, hasta) {
-    var inicio = null;
-    var DURACION = 1100;
-    function paso(ts) {
-      if (!inicio) inicio = ts;
-      var t = Math.min(1, (ts - inicio) / DURACION);
-      var eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = String(Math.round(hasta * eased));
-      if (t < 1) requestAnimationFrame(paso);
-    }
-    requestAnimationFrame(paso);
-  }
-
-  // — Texto de avance y corte —
-  var progressText = document.getElementById("js-progress-text");
-  if (progressText) {
-    progressText.textContent = tomados + " de " + meta + " lugares · " + pct + "%";
-  }
-  var progressWrap = document.getElementById("js-progress-wrap");
-  if (progressWrap) {
-    progressWrap.setAttribute("aria-label",
-      "Avance del Fondo Fundadores: " + tomados + " de " + meta + " lugares, " + pct + " por ciento");
-  }
-  var corte = document.getElementById("js-corte");
-  if (corte && cfg.fechaCorte) {
-    corte.textContent = "Al corte del " + formatoCorte(cfg.fechaCorte) +
-      " · días y ritmo se calculan al momento.";
-  }
-
-  // — Contadores + barra: animan al entrar en pantalla —
-  var avance = document.getElementById("avance");
-  var fill = document.getElementById("js-progress");
-
-  function dispara() {
-    Object.keys(valores).forEach(function (id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      if (reduceMotion) { el.textContent = String(valores[id]); }
-      else { animaConteo(el, valores[id]); }
-    });
-    if (fill) fill.style.width = pct + "%";
-  }
-
-  if (avance && "IntersectionObserver" in window) {
-    var visto = false;
-    new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting && !visto) {
-          visto = true;
-          dispara();
-          obs.disconnect();
-        }
-      });
-    }, { threshold: 0.3 }).observe(avance);
-  } else {
-    dispara();
-  }
-
-  // — Reveal de secciones —
-  var reveals = document.querySelectorAll(".reveal");
+/* — Reveal de secciones — */
+function iniciarReveals() {
+  const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduceMotion) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-in");
-          io.unobserve(e.target);
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.classList.add("is-in");
+          io.unobserve(en.target);
         }
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function (el) { io.observe(el); });
+    reveals.forEach((el) => io.observe(el));
   } else {
-    reveals.forEach(function (el) { el.classList.add("is-in"); });
+    reveals.forEach((el) => el.classList.add("is-in"));
   }
+}
 
-  // — CTA de WhatsApp (config-driven) —
-  var urlDisplay = cfg.urlDisplay || "";
-  ["js-url-display", "js-url-display-final"].forEach(function (id) {
-    var el = document.getElementById(id);
+/* — CTA de WhatsApp (config-driven) en todos los botones — */
+function iniciarConversion() {
+  const urlDisplay = cfg.urlDisplay || "";
+  ["js-url-display", "js-url-display-final"].forEach((id) => {
+    const el = document.getElementById(id);
     if (el && urlDisplay) el.textContent = urlDisplay;
   });
 
-  var numero = String(cfg.whatsapp || "").replace(/\D/g, "");
+  const numero = String(cfg.whatsapp || "").replace(/\D/g, "");
   if (numero) {
-    var waHref = "https://wa.me/" + numero +
+    const waHref = "https://wa.me/" + numero +
       "?text=" + encodeURIComponent(cfg.mensajeWhatsApp || "Quiero tomar mi lugar en La Nave.");
-    var waCta = document.getElementById("js-wa-cta");
-    var waFinal = document.getElementById("js-wa-cta-final");
-    var alt = document.getElementById("js-cta-alt");
+
+    const waCta = document.getElementById("js-wa-cta");
     if (waCta) {
       waCta.href = waHref;
       waCta.hidden = false;
       waCta.target = "_blank";
       waCta.rel = "noopener";
     }
-    if (waFinal) {
-      waFinal.href = waHref;
-      waFinal.target = "_blank";
-      waFinal.rel = "noopener";
-      waFinal.textContent = "Toma tu lugar por WhatsApp";
-    }
-    if (alt) {
-      alt.textContent = "También puedes registrarte en los dos cultos dominicales o con tu líder de grupo.";
-    }
+    ["js-wa-cta-final", "js-muro-cta", "js-zarpe-cta"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.href = waHref;
+        el.target = "_blank";
+        el.rel = "noopener";
+      }
+    });
+    const final = document.getElementById("js-wa-cta-final");
+    if (final) final.textContent = "Toma tu lugar por WhatsApp";
+    const alt = document.getElementById("js-cta-alt");
+    if (alt) alt.textContent = "También puedes registrarte en los dos cultos dominicales o con tu líder de grupo.";
   }
-})();
+
+  /* medición de cada CTA (anónima) */
+  document.querySelectorAll("[data-cta]").forEach((el) => {
+    el.addEventListener("click", () => {
+      medir("cta", { origen: el.dataset.cta, whatsapp: Boolean(numero) });
+    });
+  });
+}
+
+/* — Compartir: hoja nativa del teléfono o WhatsApp — */
+function iniciarCompartir() {
+  const btn = document.getElementById("js-compartir");
+  if (!btn) return;
+
+  const texto = cfg.compartir || "Toma tu lugar en La Nave 👉 masalto.org/lanave";
+
+  btn.addEventListener("click", async () => {
+    medir("compartir");
+    if (navigator.share) {
+      try {
+        await navigator.share({ text: texto });
+        return;
+      } catch (e) {
+        /* usuario canceló: no pasa nada */
+        return;
+      }
+    }
+    window.open("https://wa.me/?text=" + encodeURIComponent(texto), "_blank", "noopener");
+  });
+}
+
+/* — Barra de zarpe: aparece tras el hero, se retira en el cierre — */
+function iniciarZarpe() {
+  const barra = document.getElementById("js-zarpe");
+  const hero = document.getElementById("inicio");
+  const final = document.getElementById("final");
+  if (!barra || !hero || !("IntersectionObserver" in window)) return;
+
+  let cerrada = false;
+  let heroVisible = true;
+  let finalVisible = false;
+
+  function pinta() {
+    barra.classList.toggle("es-visible", !cerrada && !heroVisible && !finalVisible);
+  }
+
+  new IntersectionObserver((entradas) => {
+    entradas.forEach((en) => { heroVisible = en.isIntersecting; });
+    pinta();
+  }, { threshold: 0.05 }).observe(hero);
+
+  new IntersectionObserver((entradas) => {
+    entradas.forEach((en) => { finalVisible = en.isIntersecting; });
+    pinta();
+  }, { threshold: 0.15 }).observe(final);
+
+  const cerrar = document.getElementById("js-zarpe-cerrar");
+  if (cerrar) {
+    cerrar.addEventListener("click", () => {
+      cerrada = true;
+      medir("zarpe_cerrada");
+      pinta();
+    });
+  }
+}
+
+/* — FAQ: qué pregunta abre la comunidad — */
+function iniciarFaq() {
+  document.querySelectorAll(".faq-item").forEach((det) => {
+    det.addEventListener("toggle", () => {
+      if (det.open) {
+        const s = det.querySelector("summary");
+        medir("faq", { pregunta: s ? s.textContent.trim().slice(0, 60) : "" });
+      }
+    });
+  });
+}
+
+/* — Arranque — */
+iniciarReveals();
+iniciarConversion();
+iniciarCompartir();
+iniciarTravesia();
+iniciarMuro();
+iniciarContadores();
+iniciarChips();
+iniciarCuentaRegresiva();
+iniciarZarpe();
+iniciarFaq();
+
+medir("carga", { tomados: estado().tomados });
+medirAlVer(document.getElementById("tomar"), "pasos_vistos");
+sincronizar();
