@@ -13,8 +13,9 @@ window.LANAVE = {
 
   // — Conversión —
   // Número de WhatsApp del equipo en formato internacional, solo dígitos.
-  // Ejemplo: "5219991234567". Vacío = los CTA llevan a la sección de pasos.
-  whatsapp: "",
+  // MX móvil: 52 + 10 dígitos, con el "1" de móvil → 521XXXXXXXXXX.
+  // Si al probar el botón NO abre el chat, quita el "1" (deja 52 + 10 dígitos).
+  whatsapp: "5219991300726", // Rodrigo Cedeño · líder de la causa · +52 999 130 0726
   mensajeWhatsApp: "Hola 👋 Quiero tomar mi lugar en La Nave.",
 
   // — URL que se muestra como referencia en la página —

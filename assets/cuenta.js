@@ -122,6 +122,7 @@ export function iniciarContadores() {
 export function iniciarChips() {
   const chipAvance = document.getElementById("js-chip-avance");
   const chipCierre = document.getElementById("js-chip-cierre");
+  const heroFill = document.getElementById("js-hero-fill");
 
   function pinta() {
     const e = estado();
@@ -131,6 +132,7 @@ export function iniciarChips() {
     if (chipCierre) {
       chipCierre.innerHTML = "cierra en <strong>" + e.dias + " " + (e.dias === 1 ? "día" : "días") + "</strong>";
     }
+    if (heroFill) heroFill.style.width = e.pct + "%";
   }
 
   pinta();

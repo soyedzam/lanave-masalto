@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <link rel="preload" as="image" href="assets/hero-comunidad.jpg">
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/experiencia.css">
 </head>
@@ -47,22 +48,29 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero band band-dark" id="inicio" aria-labelledby="hero-heading">
-      <svg class="hero-plano" viewBox="0 0 560 310" aria-hidden="true" focusable="false">
-        <path d="M60 290 L60 165 L170 82 L280 165 L280 290 M170 82 L450 82 M280 165 L540 165 L540 290 M450 82 L540 165 M60 165 L340 165 M340 165 L340 290" />
-      </svg>
+      <img class="hero-foto" src="assets/hero-comunidad.jpg" alt="" aria-hidden="true"
+           width="1600" height="900" decoding="async" fetchpriority="high">
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-bloom" aria-hidden="true"></div>
+      <div class="hero-embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="wrap hero-inner">
-        <p class="eyebrow"><span class="diamond" aria-hidden="true">◆</span> Levanta Más Alto · Fondo Fundadores</p>
-        <h1 id="hero-heading" class="hero-title">La&nbsp;Nave</h1>
-        <p class="hero-lede">El primer espacio propio de nuestra comunidad. Uno que es nuestro&nbsp;— para los próximos 15&nbsp;años.</p>
-        <div class="hero-actions">
+        <p class="eyebrow hero-in" style="--d:.2s"><span class="diamond" aria-hidden="true">◆</span> Levanta Más Alto · Fondo Fundadores</p>
+        <h1 id="hero-heading" class="hero-title"><span class="hero-title-mask"><span class="hero-title-in">La&nbsp;Nave</span></span></h1>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <p class="hero-lede hero-in" style="--d:.95s">El primer espacio propio de nuestra comunidad. Uno que es nuestro&nbsp;— para los próximos 15&nbsp;años.</p>
+        <div class="hero-actions hero-in" style="--d:1.2s">
           <a class="btn btn-lg" href="#tomar" data-cta="hero">Toma tu lugar en La Nave</a>
           <a class="link-ghost" href="#travesia">Mira cómo se levanta ↓</a>
         </div>
-        <div class="chips" role="status">
-          <p class="chip" id="js-chip-avance">258 lugares</p>
-          <p class="chip" id="js-chip-cierre">cierre firme <strong>31 de julio</strong></p>
+        <div class="hero-live hero-in" style="--d:1.45s">
+          <div class="chips" role="status">
+            <p class="chip chip-live" id="js-chip-avance">258 lugares</p>
+            <p class="chip" id="js-chip-cierre">cierre firme <strong>31 de julio</strong></p>
+          </div>
+          <div class="hero-track" aria-hidden="true"><span id="js-hero-fill"></span></div>
         </div>
       </div>
+      <a class="hero-cue" href="#travesia" aria-label="Desplázate para ver cómo se levanta"><span></span></a>
     </section>
 
     <!-- ============ LA TRAVESÍA (el scroll la construye) ============ -->
