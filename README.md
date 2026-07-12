@@ -59,6 +59,17 @@ medicion: "https://…/eventos",
 `faq`, `pasos_vistos`, `zarpe_cerrada`. **Cero datos personales, cero cookies.**
 Sin endpoint, la medición está apagada.
 
+## Videos (self-hosted, sin YouTube)
+
+Los 3 clips (720p, H.264, ~2 MB c/u) viven en `assets/video/` y se encadenan
+en loop en la sección "La Nave en movimiento". Autoplay **mudo** al entrar en
+pantalla (política de navegadores), pausa al salir, botón de sonido para
+presentaciones. Con `prefers-reduced-motion`: sin autoplay, controles nativos.
+
+Para cambiar/añadir clips: reemplaza los `.mp4` en `assets/video/` y ajusta el
+arreglo `CLIPS` en [`assets/video.js`](assets/video.js). Mantén 16:9 y peso bajo
+(&lt;3 MB por clip). El póster (`assets/video-poster.jpg`) es el primer frame.
+
 ## Arquitectura
 
 ```
