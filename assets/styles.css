@@ -532,6 +532,8 @@ svg { display: block; }
 .band-final { text-align: center; padding-bottom: 0; }
 .final-peak { width: 34px; height: 24px; fill: var(--naranja); margin-inline: auto; }
 .final-logo { height: 64px; width: auto; display: block; margin: 0 auto; }
+/* wordmark de La Nave en mayúsculas dentro de títulos (el texto real queda "La Nave") */
+.brand-caps { text-transform: uppercase; }
 .final-brand {
   margin-top: 0.9rem;
   font-size: 0.72rem;
