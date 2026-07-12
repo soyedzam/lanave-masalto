@@ -176,6 +176,46 @@
   .hero [data-parallax] { translate: none; }
 }
 
+/* ---------- scroll suave (Lenis) + barra de progreso ---------- */
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.progreso {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 70;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--bronce), var(--naranja));
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* ---------- cascada de tarjetas al entrar la sección ---------- */
+
+.reveal .stats > li,
+.reveal .value-cards > li,
+.reveal .steps > li {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 720ms var(--ease-out), transform 720ms var(--ease-out);
+}
+.reveal.is-in .stats > li,
+.reveal.is-in .value-cards > li,
+.reveal.is-in .steps > li { opacity: 1; transform: none; }
+.reveal.is-in :is(.stats, .value-cards, .steps) > li:nth-child(2) { transition-delay: 0.11s; }
+.reveal.is-in :is(.stats, .value-cards, .steps) > li:nth-child(3) { transition-delay: 0.22s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .stats > li,
+  .reveal .value-cards > li,
+  .reveal .steps > li { opacity: 1; transform: none; transition: none; }
+}
+
 /* contenido por encima de toda la atmósfera */
 .hero-inner { position: relative; z-index: 5; }
 
