@@ -98,6 +98,84 @@
 .hero-embers i:nth-child(6) { left: 81%; animation-duration: 17s; animation-delay: 4.1s; }
 .hero-embers i:nth-child(7) { left: 90%; animation-duration: 14s; animation-delay: 10.2s; }
 
+/* ---------- hero como experiencia: profundidad, luz, apertura ---------- */
+
+/* parálax: cada capa se desplaza con el cursor (hero.js setea --px/--py) */
+.hero [data-parallax] { translate: var(--px, 0) var(--py, 0); will-change: translate; }
+
+/* rayo de luz volumétrico que barre lento */
+.hero-ray {
+  position: absolute;
+  inset: -8%;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(112deg, transparent 40%, rgba(242, 145, 0, 0.09) 47%, rgba(255, 214, 150, 0.16) 50%, rgba(242, 145, 0, 0.09) 53%, transparent 60%);
+  animation: heroRay 15s ease-in-out infinite alternate;
+}
+@keyframes heroRay {
+  from { transform: translateX(-7%) rotate(-1deg); opacity: 0.55; }
+  to   { transform: translateX(7%) rotate(1.5deg); opacity: 1; }
+}
+
+/* constelación sutil (textura generativa, cero fotos) */
+.hero-stars {
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.hero-stars circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: heroTwinkle 4.5s ease-in-out infinite;
+}
+.hero-stars circle:nth-child(3n)   { animation-duration: 6s;   animation-delay: 0.7s; }
+.hero-stars circle:nth-child(3n+1) { animation-duration: 7s;   animation-delay: 1.6s; }
+.hero-stars circle:nth-child(4n)   { animation-delay: 2.6s; }
+@keyframes heroTwinkle { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.9; } }
+
+/* apertura cinematográfica: fundido desde negro */
+.hero-dawn {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: var(--carbon-deep);
+  animation: heroDawn 1.7s var(--ease-out) forwards;
+}
+@keyframes heroDawn { from { opacity: 1; } to { opacity: 0; } }
+
+/* destello de luz que recorre "LA NAVE" — recortado al texto (sin caja) */
+.hero-title-in {
+  color: transparent;
+  background-image: linear-gradient(100deg,
+    var(--blanco) 0%, var(--blanco) 42%,
+    #FFF6E4 50%,
+    var(--blanco) 58%, var(--blanco) 100%);
+  background-size: 250% 100%;
+  background-position: 130% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation:
+    heroTitle 1.05s var(--ease-out) 0.4s both,
+    heroGlint 2.6s var(--ease-out) 1.3s 1 forwards;
+}
+@keyframes heroGlint {
+  from { background-position: 130% 0; }
+  to   { background-position: -30% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ray, .hero-stars circle { animation: none; }
+  .hero-title-in { animation: none; background-position: 0 0; }
+  .hero-dawn { display: none; }
+  .hero [data-parallax] { translate: none; }
+}
+
 /* contenido por encima de toda la atmósfera */
 .hero-inner { position: relative; z-index: 5; }
 

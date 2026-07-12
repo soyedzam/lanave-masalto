@@ -6,6 +6,7 @@ import { iniciarTravesia } from "./travesia.js";
 import { iniciarMuro } from "./muro.js";
 import { iniciarCuentaRegresiva, iniciarContadores, iniciarChips } from "./cuenta.js";
 import { iniciarVideo } from "./video.js";
+import { iniciarHero } from "./hero.js";
 
 const cfg = window.LANAVE || {};
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -151,6 +152,7 @@ iniciarCuentaRegresiva();
 iniciarZarpe();
 iniciarFaq();
 iniciarVideo();
+iniciarHero();
 
 medir("carga", { tomados: estado().tomados });
 medirAlVer(document.getElementById("tomar"), "pasos_vistos");
