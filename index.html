@@ -321,6 +321,52 @@
       </div>
     </section>
 
+    <!-- ============ GALERÍA ============ -->
+    <section class="band band-light" id="galeria-sec" aria-labelledby="galeria-heading">
+      <div class="wrap reveal">
+        <p class="label label-center">La comunidad</p>
+        <h2 id="galeria-heading" class="title-xl title-center">Esto es lo que ya somos.</h2>
+        <div class="galeria" id="js-galeria">
+          <button class="g-item g-big" type="button" data-full="assets/hero-comunidad.jpg" data-cap="Bautizos en el mar — nuevos comienzos.">
+            <img src="assets/hero-comunidad.jpg" alt="Bautizos de la comunidad en el mar" loading="lazy" decoding="async">
+            <span class="g-lupa" aria-hidden="true"></span>
+          </button>
+          <button class="g-item g-tall" type="button" data-full="assets/comunidad-atardecer.jpg" data-cap="Reunidos al atardecer.">
+            <img src="assets/comunidad-atardecer.jpg" alt="Reunión de la comunidad al atardecer" loading="lazy" decoding="async">
+            <span class="g-lupa" aria-hidden="true"></span>
+          </button>
+          <button class="g-item g-video" type="button" data-video="assets/video/nave-01-carpa.mp4" data-cap="No es una carpa.">
+            <img src="assets/video-poster.jpg" alt="Video: no es una carpa" loading="lazy" decoding="async">
+            <span class="g-play" aria-hidden="true"></span>
+          </button>
+          <button class="g-item" type="button" data-full="assets/comunidad-llena.jpg" data-cap="Un domingo — y ya no cabemos.">
+            <img src="assets/comunidad-llena.jpg" alt="La congregación llena un domingo" loading="lazy" decoding="async">
+            <span class="g-lupa" aria-hidden="true"></span>
+          </button>
+          <button class="g-item g-video" type="button" data-video="assets/video/nave-02-hijos.mp4" data-cap="Donde nuestros hijos van a crecer.">
+            <img src="assets/video-poster.jpg" alt="Video: donde crecen nuestros hijos" loading="lazy" decoding="async">
+            <span class="g-play" aria-hidden="true"></span>
+          </button>
+          <button class="g-item g-tall" type="button" data-full="assets/cena-comunidad.jpg" data-cap="Cena de comunidad.">
+            <img src="assets/cena-comunidad.jpg" alt="Cena de la comunidad" loading="lazy" decoding="async">
+            <span class="g-lupa" aria-hidden="true"></span>
+          </button>
+          <button class="g-item g-wide" type="button" data-full="assets/espacio-prestado.jpg" data-cap="El salón prestado que nos quedó chico.">
+            <img src="assets/espacio-prestado.jpg" alt="El espacio prestado actual" loading="lazy" decoding="async">
+            <span class="g-lupa" aria-hidden="true"></span>
+          </button>
+          <button class="g-item g-video" type="button" data-video="assets/video/nave-03-cada-lugar.mp4" data-cap="Cada lugar acerca ese día.">
+            <img src="assets/video-poster.jpg" alt="Video: cada lugar acerca ese día" loading="lazy" decoding="async">
+            <span class="g-play" aria-hidden="true"></span>
+          </button>
+          <button class="g-item" type="button" data-full="assets/comunidad-agua.jpg" data-cap="En el agua, juntos.">
+            <img src="assets/comunidad-agua.jpg" alt="La comunidad en el agua" loading="lazy" decoding="async">
+            <span class="g-lupa" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ FONDO FUNDADORES ============ -->
     <section class="band band-light" id="fondo" aria-labelledby="fondo-heading">
       <div class="wrap split reveal">
@@ -428,6 +474,25 @@
       </div>
     </section>
 
+    <!-- ============ ENCUÉNTRANOS ============ -->
+    <section class="band band-light band-borde" id="ubicacion" aria-labelledby="ubi-heading">
+      <div class="wrap split-mapa reveal">
+        <div class="ubi-info">
+          <p class="label">Encuéntranos</p>
+          <h2 id="ubi-heading" class="title-xl">Aquí late la comunidad.</h2>
+          <p class="ubi-rating" aria-label="Calificación 5.0 de 5 en Google, 49 reseñas">
+            <span class="ubi-estrellas" aria-hidden="true">★★★★★</span>
+            <strong>5.0</strong> · 49 reseñas en Google
+          </p>
+          <p class="body-md">Comunidad Más Alto · Iglesia cristiana<br>Calle 10 entre 1 y 1A, Montecarlo, Vista Alegre Nte, 97130 Mérida, Yuc.</p>
+          <a class="btn-ghost" href="https://www.google.com/maps/place/Comunidad+M%C3%A1s+Alto/@21.027521,-89.5768332,17z" target="_blank" rel="noopener">Ver en Google Maps ↗</a>
+        </div>
+        <div class="ubi-mapa">
+          <iframe title="Ubicación de Comunidad Más Alto en Google Maps" src="https://www.google.com/maps?q=Comunidad+M%C3%A1s+Alto+M%C3%A9rida&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CIERRE ============ -->
     <section class="band band-dark band-final" id="final" aria-labelledby="final-heading">
       <div class="wrap wrap-narrow reveal">
@@ -448,6 +513,16 @@
     <p class="zarpe-txt">Cierra 31 jul · <strong data-cuenta>—</strong></p>
     <a class="btn btn-sm" href="#tomar" id="js-zarpe-cta" data-cta="zarpe">Toma tu lugar</a>
     <button class="zarpe-cerrar" id="js-zarpe-cerrar" type="button" aria-label="Ocultar barra de cierre">✕</button>
+  </div>
+
+  <!-- lightbox de la galería -->
+  <div class="lightbox" id="js-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Galería de La Nave">
+    <button class="lb-cerrar" type="button" aria-label="Cerrar galería">✕</button>
+    <button class="lb-nav lb-prev" type="button" aria-label="Anterior">‹</button>
+    <div class="lb-medio"></div>
+    <button class="lb-nav lb-next" type="button" aria-label="Siguiente">›</button>
+    <p class="lb-cap"></p>
+    <span class="lb-contador"></span>
   </div>
 
   <script src="assets/config.js"></script>

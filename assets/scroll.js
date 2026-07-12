@@ -28,6 +28,7 @@ export function iniciarScroll() {
     wheelMultiplier: 1,
     touchMultiplier: 1.5
   });
+  window.__lenis = lenis; // para pausar el scroll cuando abre el lightbox
 
   lenis.on("scroll", progreso);
 

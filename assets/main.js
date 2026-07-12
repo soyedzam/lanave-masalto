@@ -8,6 +8,7 @@ import { iniciarCuentaRegresiva, iniciarContadores, iniciarChips } from "./cuent
 import { iniciarVideo } from "./video.js";
 import { iniciarHero } from "./hero.js";
 import { iniciarScroll } from "./scroll.js";
+import { iniciarGaleria } from "./galeria.js";
 
 const cfg = window.LANAVE || {};
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -155,6 +156,7 @@ iniciarFaq();
 iniciarVideo();
 iniciarHero();
 iniciarScroll();
+iniciarGaleria();
 
 medir("carga", { tomados: estado().tomados });
 medirAlVer(document.getElementById("tomar"), "pasos_vistos");
