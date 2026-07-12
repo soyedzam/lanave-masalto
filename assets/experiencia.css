@@ -370,6 +370,68 @@ html.lb-lock { overflow: hidden; }
   .split-mapa { grid-template-columns: 1fr; }
 }
 
+/* ---------- los pastores ---------- */
+
+.pastores {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  max-width: 46rem;
+  margin: var(--space-block) auto 0;
+}
+.pastor-card {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--carbon-deep);
+  border: 1px solid var(--hairline-dark);
+  box-shadow: 0 22px 46px -26px rgba(0, 0, 0, 0.6);
+  transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.pastor-card:hover { transform: translateY(-4px); border-color: rgba(184, 134, 47, 0.5); }
+.pastor-foto {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.pastor-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  transition: transform 0.7s var(--ease-out);
+}
+.pastor-card:hover .pastor-foto img { transform: scale(1.05); }
+.pastor-foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 62%, rgba(34, 33, 30, 0.55));
+  pointer-events: none;
+}
+.pastor-info { padding: 1.2rem 1.4rem 1.5rem; text-align: center; }
+.pastor-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--hueso);
+}
+.pastor-info p {
+  margin-top: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--naranja);
+}
+.pastores-nota {
+  max-width: 52ch;
+  margin: var(--space-block) auto 0;
+  text-align: center;
+}
+@media (max-width: 560px) {
+  .pastores { grid-template-columns: 1fr; max-width: 22rem; }
+}
+
 /* contenido por encima de toda la atmósfera */
 .hero-inner { position: relative; z-index: 5; }
 
