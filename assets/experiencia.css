@@ -1128,6 +1128,22 @@ html.lb-lock { overflow: hidden; }
 
 /* ---------- movimiento reducido ---------- */
 
+/* ---------- spotlight que sigue el cursor (bandas oscuras con CTA) ---------- */
+[data-spotlight] { position: relative; isolation: isolate; }
+[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle 420px at var(--sx, 50%) var(--sy, 50%),
+              rgba(242, 145, 0, 0.10), transparent 62%);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+[data-spotlight].es-lit::after { opacity: 1; }
+[data-spotlight] > * { position: relative; z-index: 1; }
+
 @media (prefers-reduced-motion: reduce) {
   .t-caption, .celda, .celda.es-tomada, .zarpe { transition: none; }
   .zarpe { transform: translate(-50%, 0); }
