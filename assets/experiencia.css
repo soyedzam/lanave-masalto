@@ -385,9 +385,9 @@ html.lb-lock { overflow: hidden; }
   background: var(--carbon-deep);
   border: 1px solid var(--hairline-dark);
   box-shadow: 0 22px 46px -26px rgba(0, 0, 0, 0.6);
-  transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+  transition: transform var(--dur) var(--ease-spring), border-color var(--dur) var(--ease-out);
 }
-.pastor-card:hover { transform: translateY(-4px); border-color: rgba(184, 134, 47, 0.5); }
+.pastor-card:hover { transform: translateY(-5px); border-color: rgba(184, 134, 47, 0.5); }
 .pastor-foto {
   position: relative;
   aspect-ratio: 4 / 5;

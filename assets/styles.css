@@ -34,9 +34,13 @@
   --hairline-dark: rgba(184, 134, 47, 0.28);
   --hairline-light: rgba(43, 42, 38, 0.14);
 
+  /* — sistema de movimiento: 3 duraciones · 3 curvas — */
+  --dur-fast: 150ms;
   --dur: 300ms;
   --dur-slow: 700ms;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* salida suave (reveals, fundidos) */
+  --ease-spring: cubic-bezier(0.34, 1.42, 0.5, 1);  /* firma: entrada con leve overshoot */
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);     /* simétrica (loops, barridos) */
 }
 
 /* ---------- base ---------- */
@@ -154,15 +158,15 @@ svg { display: block; }
   text-decoration: none;
   border-radius: var(--radius-pill);
   transition: background var(--dur) var(--ease-out),
-              transform var(--dur) var(--ease-out),
+              transform var(--dur) var(--ease-spring),
               box-shadow var(--dur) var(--ease-out);
 }
 .btn:hover {
   background: var(--naranja-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px -12px rgba(242, 145, 0, 0.55);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -12px rgba(242, 145, 0, 0.55);
 }
-.btn:active { transform: translateY(0); }
+.btn:active { transform: translateY(-1px) scale(0.985); transition-duration: var(--dur-fast); }
 
 .btn-sm { padding: 0.55rem 1.25rem; font-size: 0.72rem; }
 .btn-lg { padding: 1rem 2.4rem; font-size: 0.84rem; }
@@ -369,7 +373,7 @@ svg { display: block; }
   padding: 1.5rem 1.75rem;
   box-shadow: 0 1px 2px rgba(43, 42, 38, 0.06), 0 12px 32px -18px rgba(43, 42, 38, 0.18);
   border-left: 2px solid var(--bronce);
-  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  transition: transform var(--dur) var(--ease-spring), box-shadow var(--dur) var(--ease-out);
 }
 .value-card:hover {
   transform: translateX(4px);
