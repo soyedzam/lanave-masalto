@@ -1,0 +1,13 @@
+[
+  { "tipo": "foto",  "src": "assets/hero-comunidad.jpg",           "size": "big",  "cap": "Bautizos en el mar — nuevos comienzos.",     "alt": "Bautizos de la comunidad en el mar" },
+  { "tipo": "foto",  "src": "assets/comunidad-atardecer.jpg",      "size": "tall", "cap": "Reunidos al atardecer.",                     "alt": "Reunión de la comunidad al atardecer" },
+  { "tipo": "video", "src": "assets/video/nave-01-carpa.mp4",      "poster": "assets/video-poster.jpg", "cap": "No es una carpa.",   "alt": "Video: no es una carpa" },
+  { "tipo": "foto",  "src": "assets/comunidad-llena.jpg",          "cap": "Un domingo — y ya no cabemos.",              "alt": "La congregación llena un domingo" },
+  { "tipo": "video", "src": "assets/video/nave-02-hijos.mp4",      "poster": "assets/video-poster.jpg", "cap": "Donde nuestros hijos van a crecer.", "alt": "Video: donde crecen nuestros hijos" },
+  { "tipo": "foto",  "src": "assets/cena-comunidad.jpg",           "size": "tall", "cap": "Cena de comunidad.",                        "alt": "Cena de la comunidad" },
+  { "tipo": "foto",  "src": "assets/comunidad-unica.jpg",          "size": "tall", "cap": "Noche de mujeres — comunidad Única.",       "alt": "Evento de la comunidad Única al aire libre" },
+  { "tipo": "foto",  "src": "assets/boliche-adoracion.jpg",        "size": "wide", "cap": "Adoración en el boliche — manos en alto.",  "alt": "La comunidad en adoración con las manos en alto" },
+  { "tipo": "foto",  "src": "assets/boliche-culto.jpg",            "cap": "Culto de domingo, todos juntos.",            "alt": "Culto de domingo de la comunidad" },
+  { "tipo": "video", "src": "assets/video/nave-03-cada-lugar.mp4", "poster": "assets/video-poster.jpg", "cap": "Cada lugar acerca ese día.", "alt": "Video: cada lugar acerca ese día" },
+  { "tipo": "foto",  "src": "assets/comunidad-agua.jpg",           "cap": "En el agua, juntos.",                        "alt": "La comunidad en el agua" }
+]
