@@ -9,6 +9,7 @@ import { iniciarVideo } from "./video.js";
 import { iniciarHero } from "./hero.js";
 import { iniciarScroll } from "./scroll.js";
 import { iniciarGaleria } from "./galeria.js";
+import { iniciarVsl } from "./vsl.js";
 
 const cfg = window.LANAVE || {};
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -157,6 +158,7 @@ iniciarVideo();
 iniciarHero();
 iniciarScroll();
 iniciarGaleria();
+iniciarVsl();
 
 medir("carga", { tomados: estado().tomados });
 medirAlVer(document.getElementById("tomar"), "pasos_vistos");
