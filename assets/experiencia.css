@@ -854,16 +854,55 @@ html.lb-lock { overflow: hidden; }
   color: color-mix(in srgb, var(--hueso) 80%, transparent);
 }
 .muro-cta { text-align: center; margin-top: 2.2rem; }
-.muro-precio {
-  margin-top: 1rem;
-  text-align: center;
-  font-size: 0.78rem;
+/* — la meta de la causa: 258 × $3,850 = $993,300 — */
+.meta-causa { margin-top: 2.6rem; text-align: center; }
+.meta-causa-label {
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--bronce);
+  margin-bottom: 1.3rem;
+}
+.meta-eq {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+}
+.meta-term {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+.meta-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--hueso);
+  font-variant-numeric: tabular-nums;
+}
+.meta-total .meta-num { color: var(--naranja); }
+.meta-lbl {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--piedra);
 }
-.muro-precio [data-precio] { color: var(--naranja); font-variant-numeric: tabular-nums; }
+.meta-op {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem);
+  color: var(--bronce);
+  line-height: 1;
+  margin-top: 0.35rem;
+}
+@media (max-width: 480px) {
+  .meta-eq { gap: 0.5rem 1rem; }
+}
 
 /* — hitos sobre la barra de avance — */
 .progress-track { position: relative; overflow: visible; }

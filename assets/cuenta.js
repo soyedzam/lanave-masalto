@@ -61,9 +61,13 @@ export function iniciarContadores() {
 
   function pintaTextos() {
     const e = estado();
-    document.querySelectorAll("[data-precio]").forEach((el) => {
-      if (window.LANAVE && window.LANAVE.precio) el.textContent = "$" + Number(window.LANAVE.precio).toLocaleString("es-MX");
-    });
+    const precio = window.LANAVE && window.LANAVE.precio;
+    const pesos = (n) => "$" + Number(n).toLocaleString("es-MX");
+    if (precio) {
+      document.querySelectorAll("[data-precio]").forEach((el) => { el.textContent = pesos(precio); });
+      document.querySelectorAll("[data-meta-total]").forEach((el) => { el.textContent = pesos(e.meta * precio); });
+    }
+    document.querySelectorAll("[data-meta-ladrillos]").forEach((el) => { el.textContent = String(e.meta); });
     const progressText = document.getElementById("js-progress-text");
     if (progressText) {
       progressText.textContent = e.tomados + " de " + e.meta + " ladrillos · " + e.pct + "%";
