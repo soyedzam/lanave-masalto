@@ -1193,6 +1193,89 @@ html.lb-lock { overflow: hidden; }
 [data-spotlight].es-lit::after { opacity: 1; }
 [data-spotlight] > * { position: relative; z-index: 1; }
 
+/* ---------- cursor de marca (aura) — acompaña, no reemplaza al puntero ---------- */
+.cursor-aura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(242, 145, 0, 0.5);
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.3s var(--ease-out),
+              width 0.28s var(--ease-spring),
+              height 0.28s var(--ease-spring),
+              background 0.28s var(--ease-out),
+              border-color 0.28s var(--ease-out);
+}
+.cursor-aura.es-visible { opacity: 1; }
+.cursor-aura.es-activo {
+  width: 46px;
+  height: 46px;
+  background: rgba(242, 145, 0, 0.1);
+  border-color: rgba(242, 145, 0, 0.85);
+}
+.cursor-aura.es-press { width: 18px; height: 18px; }
+
+/* ---------- easter egg (Konami): La Nave se levanta ---------- */
+.egg {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+  background: radial-gradient(circle at 50% 62%, rgba(17, 16, 14, 0.42), rgba(17, 16, 14, 0.84));
+}
+.egg.es-vivo { opacity: 1; }
+.egg-embers { position: absolute; inset: 0; overflow: hidden; }
+.egg-embers i {
+  position: absolute;
+  bottom: -22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 145, 0, 0.95), rgba(242, 145, 0, 0));
+  animation-name: eggRise;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+@keyframes eggRise {
+  0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+  14%  { opacity: 0.9; }
+  100% { transform: translateY(-106vh) scale(1.15); opacity: 0; }
+}
+.egg-msg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2rem, 1.2rem + 3vw, 4rem);
+  color: var(--hueso);
+  text-shadow: 0 0 44px rgba(242, 145, 0, 0.55);
+  opacity: 0;
+  animation: eggMsg 3.4s var(--ease-out) forwards;
+}
+@keyframes eggMsg { 0%, 100% { opacity: 0; } 18%, 74% { opacity: 1; } }
+
+/* ---------- modo lite: menos efectos, misma estética ---------- */
+.es-lite .hero-embers,
+.es-lite .hero-stars { display: none; }
+.es-lite .hero-foto { animation: none; transform: scale(1.08); }
+.es-lite .hero-ray,
+.es-lite .hero-bloom { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-aura, .egg { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .t-caption, .celda, .celda.es-tomada, .zarpe { transition: none; }
   .zarpe { transform: translate(-50%, 0); }

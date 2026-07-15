@@ -10,7 +10,8 @@ import { iniciarHero } from "./hero.js";
 import { iniciarScroll } from "./scroll.js";
 import { iniciarGaleria } from "./galeria.js";
 import { iniciarVsl } from "./vsl.js";
-import { iniciarInteracciones } from "./interacciones.js";
+import { iniciarInteracciones, esLite } from "./interacciones.js";
+import { iniciarExtras } from "./extras.js";
 
 const cfg = window.LANAVE || {};
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -160,7 +161,9 @@ iniciarHero();
 iniciarScroll();
 iniciarGaleria();
 iniciarVsl();
+if (esLite()) document.documentElement.classList.add("es-lite");
 iniciarInteracciones();
+iniciarExtras();
 
 medir("carga", { tomados: estado().tomados });
 medirAlVer(document.getElementById("tomar"), "pasos_vistos");
