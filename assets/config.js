@@ -4,8 +4,8 @@
 
 window.LANAVE = {
   // — Corte de avance (actualizar con cada corte real) —
-  tomados: 37,
-  fechaCorte: "2026-07-11",
+  tomados: 39,
+  fechaCorte: "2026-07-14",
 
   // — Constantes de campaña —
   meta: 258,
