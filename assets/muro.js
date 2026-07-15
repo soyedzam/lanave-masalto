@@ -71,7 +71,8 @@ export function iniciarMuro() {
   const svg = el("svg", {
     class: "muro-svg",
     viewBox: "0 0 " + ancho + " " + (alto + 14),
-    role: "img"
+    role: "img",
+    "aria-label": "La fachada de La Nave dibujada con 258 ladrillos; los ladrillos ya tomados están encendidos y el avance se detalla en los contadores debajo."
   });
 
   /* degradado de lugar tomado: bronce → naranja, la chispa de la marca */
