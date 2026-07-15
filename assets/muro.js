@@ -134,14 +134,14 @@ export function iniciarMuro() {
     const e = estado();
     svg.setAttribute("aria-label",
       "El Muro de los 258: la fachada de La Nave dibujada con " + e.meta +
-      " lugares. " + e.tomados + " tomados, " + e.disponibles +
+      " ladrillos. " + e.tomados + " tomados, " + e.disponibles +
       " disponibles. Se enciende de abajo hacia arriba y la puerta queda abierta.");
 
     rects.forEach((r) => {
       const tomada = r.orden < e.tomados;
       r.titulo.textContent = tomada
-        ? "Lugar tomado · gracias"
-        : "Lugar disponible · toca para tomarlo";
+        ? "Ladrillo tomado · gracias"
+        : "Ladrillo disponible · toca para tomarlo";
       if (tomada && !r.rect.classList.contains("es-tomada")) {
         r.rect.classList.add("es-tomada");
         if (animar && !reduceMotion) {
@@ -159,12 +159,12 @@ export function iniciarMuro() {
     const nota = document.getElementById("js-muro-nota");
     if (nota) {
       nota.textContent = e.completo
-        ? "Los 258 lugares están tomados. La Nave se levanta completa."
-        : e.tomados + " encendidos · " + e.disponibles + " por encender — el siguiente es el lugar #" + e.siguiente + ".";
+        ? "Los 258 ladrillos están tomados. La Nave se levanta completa."
+        : e.tomados + " encendidos · " + e.disponibles + " por encender — el siguiente es el ladrillo #" + e.siguiente + ".";
     }
     const btn = document.getElementById("js-muro-cta");
     if (btn && !e.completo) {
-      btn.textContent = "Toma el lugar #" + e.siguiente;
+      btn.textContent = "Toma el ladrillo #" + e.siguiente;
     }
   }
 

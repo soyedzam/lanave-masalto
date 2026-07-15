@@ -11,6 +11,9 @@ window.LANAVE = {
   meta: 258,
   cierre: "2026-07-31",
 
+  // — Precio por ladrillo (se muestra en el sitio; editar aquí) —
+  precio: 3850,
+
   // — Conversión —
   // Número de WhatsApp del equipo en formato internacional, solo dígitos.
   // MX móvil: 52 + 10 dígitos, con el "1" de móvil → 521XXXXXXXXXX.
@@ -22,7 +25,7 @@ window.LANAVE = {
   urlDisplay: "masalto.org/lanave",
 
   // — Texto del botón «Compártelo» (WhatsApp / hoja de compartir del teléfono) —
-  compartir: "Más Alto: La Nave es el primer espacio propio de nuestra comunidad. 258 lugares la levantan — toma el tuyo 👉 masalto.org/lanave",
+  compartir: "Más Alto: La Nave es el primer espacio propio de nuestra comunidad. 258 ladrillos la levantan — toma el tuyo 👉 masalto.org/lanave",
 
   // — Avance automático (opcional) —
   // URL de un JSON público con el corte vivo: {"tomados": 37, "fechaCorte": "2026-07-11"}

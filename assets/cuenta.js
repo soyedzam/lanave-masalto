@@ -61,14 +61,17 @@ export function iniciarContadores() {
 
   function pintaTextos() {
     const e = estado();
+    document.querySelectorAll("[data-precio]").forEach((el) => {
+      if (window.LANAVE && window.LANAVE.precio) el.textContent = "$" + Number(window.LANAVE.precio).toLocaleString("es-MX");
+    });
     const progressText = document.getElementById("js-progress-text");
     if (progressText) {
-      progressText.textContent = e.tomados + " de " + e.meta + " lugares · " + e.pct + "%";
+      progressText.textContent = e.tomados + " de " + e.meta + " ladrillos · " + e.pct + "%";
     }
     const wrap = document.getElementById("js-progress-wrap");
     if (wrap) {
       wrap.setAttribute("aria-label",
-        "Avance del Fondo Fundadores: " + e.tomados + " de " + e.meta + " lugares, " + e.pct + " por ciento");
+        "Avance del Fondo Fundadores: " + e.tomados + " de " + e.meta + " ladrillos, " + e.pct + " por ciento");
     }
     const corte = document.getElementById("js-corte");
     if (corte && e.fechaCorte) {
@@ -127,7 +130,7 @@ export function iniciarChips() {
   function pinta() {
     const e = estado();
     if (chipAvance) {
-      chipAvance.innerHTML = "<strong>" + e.tomados + "</strong> de " + e.meta + " lugares tomados";
+      chipAvance.innerHTML = "<strong>" + e.tomados + "</strong> de " + e.meta + " ladrillos tomados";
     }
     if (chipCierre) {
       chipCierre.innerHTML = "cierra en <strong>" + e.dias + " " + (e.dias === 1 ? "día" : "días") + "</strong>";

@@ -854,6 +854,16 @@ html.lb-lock { overflow: hidden; }
   color: color-mix(in srgb, var(--hueso) 80%, transparent);
 }
 .muro-cta { text-align: center; margin-top: 2.2rem; }
+.muro-precio {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--piedra);
+}
+.muro-precio [data-precio] { color: var(--naranja); font-variant-numeric: tabular-nums; }
 
 /* — hitos sobre la barra de avance — */
 .progress-track { position: relative; overflow: visible; }
