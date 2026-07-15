@@ -66,6 +66,7 @@ export function iniciarContadores() {
     if (precio) {
       document.querySelectorAll("[data-precio]").forEach((el) => { el.textContent = pesos(precio); });
       document.querySelectorAll("[data-meta-total]").forEach((el) => { el.textContent = pesos(e.meta * precio); });
+      document.querySelectorAll("[data-levantado]").forEach((el) => { el.textContent = pesos(e.tomados * precio); });
     }
     document.querySelectorAll("[data-meta-ladrillos]").forEach((el) => { el.textContent = String(e.meta); });
     const progressText = document.getElementById("js-progress-text");

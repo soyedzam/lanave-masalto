@@ -441,6 +441,10 @@ svg { display: block; }
   color: var(--piedra);
 }
 .progress-caption .progress-close { color: var(--bronce); }
+.progress-pesos { margin-top: 0.5rem; }
+.progress-pesos strong { font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
+.progress-pesos [data-levantado] { color: var(--naranja); }
+.progress-pesos .progress-close strong { color: var(--hueso); }
 
 .cut-note {
   margin-top: 2.2rem;
