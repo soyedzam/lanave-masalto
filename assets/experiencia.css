@@ -657,14 +657,7 @@ html.lb-lock { overflow: hidden; }
   color: color-mix(in srgb, var(--ink) 64%, transparent);
 }
 .hito-meta .hito-num { color: var(--naranja); font-size: 1.4rem; line-height: 1; }
-.hito-meta .hito-foto {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(155deg, rgba(242, 145, 0, 0.16), rgba(184, 134, 47, 0.05));
-  color: var(--naranja);
-}
-.hito-peak { width: 40%; height: auto; }
+.hito-meta .hito-foto { box-shadow: 0 0 0 1.5px rgba(242, 145, 0, 0.55), 0 16px 36px -26px rgba(242, 145, 0, 0.45); }
 .hito-meta .hito-titulo { color: var(--naranja); }
 
 @media (max-width: 640px) {
