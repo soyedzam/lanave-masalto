@@ -602,6 +602,78 @@ html.lb-lock { overflow: hidden; }
 }
 .porque-stats-label { margin-top: var(--space-block); }
 
+/* ---------- de dónde venimos · línea de tiempo ---------- */
+.historia-label { margin-top: var(--space-block); }
+.historia {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(208px, 1fr);
+  gap: 1rem;
+  margin-top: 1.6rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 0.7rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bronce) transparent;
+}
+.hito-lugar { scroll-snap-align: start; }
+.hito-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--bronce);
+}
+.hito-foto {
+  display: block;
+  margin-top: 0.5rem;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--carbon-deep);
+  box-shadow: 0 1px 2px rgba(43, 42, 38, 0.08), 0 16px 36px -26px rgba(43, 42, 38, 0.4);
+}
+.hito-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  filter: saturate(0.92) contrast(1.03) sepia(0.1);
+  transition: transform 0.6s var(--ease-out);
+}
+.hito-lugar:hover .hito-foto img { transform: scale(1.05); }
+.hito-titulo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  color: var(--ink);
+}
+.hito-desc {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 64%, transparent);
+}
+.hito-meta .hito-num { color: var(--naranja); font-size: 1.4rem; line-height: 1; }
+.hito-meta .hito-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(155deg, rgba(242, 145, 0, 0.16), rgba(184, 134, 47, 0.05));
+  color: var(--naranja);
+}
+.hito-peak { width: 40%; height: auto; }
+.hito-meta .hito-titulo { color: var(--naranja); }
+
+@media (max-width: 640px) {
+  .historia { grid-auto-columns: 76vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hito-foto img, .hito-lugar:hover .hito-foto img { transition: none; transform: none; }
+}
+
 @media (max-width: 760px) {
   .porque-fotos { grid-template-columns: 1fr; }
   .foto-real, .foto-real-lg { min-height: 240px; }
