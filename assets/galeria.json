@@ -9,5 +9,7 @@
   { "tipo": "foto",  "src": "assets/boliche-adoracion.jpg",        "size": "wide", "cap": "Adoración en el boliche — manos en alto.",  "alt": "La comunidad en adoración con las manos en alto" },
   { "tipo": "foto",  "src": "assets/boliche-culto.jpg",            "cap": "Culto de domingo, todos juntos.",            "alt": "Culto de domingo de la comunidad" },
   { "tipo": "video", "src": "assets/video/nave-03-cada-lugar.mp4", "poster": "assets/video-poster.jpg", "cap": "Cada ladrillo acerca ese día.", "alt": "Video: cada ladrillo acerca ese día" },
-  { "tipo": "foto",  "src": "assets/comunidad-agua.jpg",           "cap": "En el agua, juntos.",                        "alt": "La comunidad en el agua" }
+  { "tipo": "foto",  "src": "assets/comunidad-agua.jpg",           "cap": "En el agua, juntos.",                        "alt": "La comunidad en el agua" },
+  { "tipo": "foto",  "src": "assets/nave-frente.jpg",              "cap": "El frente de La Nave.",                      "alt": "El frente acristalado de La Nave, con vista a la ciudad" },
+  { "tipo": "foto",  "src": "assets/nave-construccion.jpg",        "size": "wide", "cap": "La Nave, levantándose ahora.", "alt": "La estructura de acero de La Nave en construcción" }
 ]

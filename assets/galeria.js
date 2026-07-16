@@ -13,7 +13,8 @@ const CLASE_TAMANO = { big: "g-big", tall: "g-tall", wide: "g-wide" };
 function crearItem(it) {
   const btn = document.createElement("button");
   btn.type = "button";
-  btn.className = ["g-item", it.tipo === "video" ? "g-video" : "", CLASE_TAMANO[it.size] || ""]
+  const esReproducible = it.tipo === "video" || it.tipo === "youtube";
+  btn.className = ["g-item", esReproducible ? "g-video" : "", CLASE_TAMANO[it.size] || ""]
     .filter(Boolean).join(" ");
   const cap = it.cap || "";
   btn.dataset.cap = cap;
@@ -26,7 +27,11 @@ function crearItem(it) {
   const marca = document.createElement("span");
   marca.setAttribute("aria-hidden", "true");
 
-  if (it.tipo === "video") {
+  if (it.tipo === "youtube") {
+    btn.dataset.youtube = it.id;
+    img.src = it.poster || "";
+    marca.className = "g-play";
+  } else if (it.tipo === "video") {
     btn.dataset.video = it.src;
     img.src = it.poster || "";
     marca.className = "g-play";
@@ -67,7 +72,20 @@ function cablear(grid, lb) {
     const it = items[idx];
     const texto = it.dataset.cap || "";
     medio.innerHTML = "";
-    if (it.dataset.video) {
+    if (it.dataset.youtube) {
+      const f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + it.dataset.youtube +
+        "?autoplay=1&rel=0&playsinline=1&modestbranding=1";
+      f.title = texto || "Video de La Nave";
+      f.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture; fullscreen");
+      f.setAttribute("allowfullscreen", "");
+      f.className = "lb-video";
+      f.style.width = "min(92vw, 960px)";
+      f.style.aspectRatio = "16 / 9";
+      f.style.height = "auto";
+      f.style.border = "0";
+      medio.appendChild(f);
+    } else if (it.dataset.video) {
       const v = document.createElement("video");
       v.src = it.dataset.video;
       v.controls = true;
