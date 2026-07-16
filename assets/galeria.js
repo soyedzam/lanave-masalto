@@ -1,11 +1,13 @@
-/* LA NAVE · galería bento + lightbox — fotos y videos reales, self-hosted.
-   Fuente de la verdad: assets/galeria.json (edítalo para actualizar la galería
-   sin tocar el HTML). El bento en index.html es el RESPALDO no-JS / SEO: si el
-   fetch del manifiesto falla, se conserva tal cual. Cada .g-item declara
-   data-full (imagen) o data-video (mp4) y data-cap; el lightbox abre imagen o
-   reproduce video, con prev/next/esc/clic-fuera. */
+/* LA NAVE · galería bento + lightbox — fotos y videos reales.
+   Las fotos salen del pozo de Cloudinary cuando está configurado en config.js
+   (subir una foto la publica, sin tocar código); los videos y el respaldo viven
+   en assets/galeria.json. El bento en index.html es el último respaldo no-JS /
+   SEO: si todo falla, se conserva tal cual. Cada .g-item declara data-full
+   (imagen) o data-video (mp4) o data-youtube y data-cap; el lightbox abre
+   imagen o reproduce video, con prev/next/esc/clic-fuera. */
 
 import { medir } from "./medir.js";
+import { traerFotos } from "./cloudinary.js";
 
 const CLASE_TAMANO = { big: "g-big", tall: "g-tall", wide: "g-wide" };
 
@@ -36,7 +38,7 @@ function crearItem(it) {
     img.src = it.poster || "";
     marca.className = "g-play";
   } else {
-    btn.dataset.full = it.src;
+    btn.dataset.full = it.full || it.src;
     img.src = it.src;
     marca.className = "g-lupa";
   }
@@ -135,17 +137,36 @@ function cablear(grid, lb) {
   });
 }
 
-export function iniciarGaleria() {
+/** El manifiesto del repo: fotos + videos, y respaldo si Cloudinary no contesta. */
+async function traerManifiesto(src) {
+  if (!src) return [];
+  try {
+    const r = await fetch(src);
+    if (!r.ok) return [];
+    const items = await r.json();
+    return Array.isArray(items) ? items : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Con el pozo encendido las fotos vienen de Cloudinary y los videos del
+    manifiesto; sin él, manda el manifiesto entero. */
+async function componer(src, cfg) {
+  const [fotos, manifiesto] = await Promise.all([traerFotos(cfg), traerManifiesto(src)]);
+  if (!fotos.length) return manifiesto;
+  const videos = manifiesto.filter((it) => it.tipo === "video" || it.tipo === "youtube");
+  return [...fotos, ...videos];
+}
+
+export async function iniciarGaleria() {
   const grid = document.getElementById("js-galeria");
   const lb = document.getElementById("js-lightbox");
   if (!grid || !lb) return;
 
-  const src = grid.dataset.src;
-  if (!src) { cablear(grid, lb); return; }
-
-  fetch(src)
-    .then((r) => (r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status))))
-    .then((items) => { if (Array.isArray(items) && items.length) construir(grid, items); })
-    .catch(() => { /* se conserva el bento del HTML como respaldo */ })
-    .finally(() => cablear(grid, lb));
+  const cfg = (window.LANAVE && window.LANAVE.galeria) || {};
+  const items = await componer(grid.dataset.src, cfg);
+  // Sin items utilizables se conserva el bento del HTML como respaldo.
+  if (items.length) construir(grid, items);
+  cablear(grid, lb);
 }

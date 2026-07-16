@@ -36,5 +36,26 @@ window.LANAVE = {
   // — Medición (opcional) —
   // URL de un endpoint que reciba eventos anónimos del embudo (POST JSON).
   // Vacío = medición apagada. Nunca se envían datos personales.
-  medicion: ""
+  medicion: "",
+
+  // — Galería viva (opcional) —
+  // Pozo de fotos en Cloudinary: subes una foto con el tag y aparece sola en
+  // la galería (~60s), sin tocar código ni publicar. Los videos siguen en
+  // assets/galeria.json. Vacío = manda assets/galeria.json y nada cambia.
+  //
+  // El pozo es "realidades": lo comparten todas las marcas del portafolio.
+  // Por eso el tag lleva el código de la entidad — CMA (Comunidad Más Alto)
+  // en el Registro de Entidades — y así no se cruza con kids, arka o un
+  // cliente. Convención del pozo: carpeta [cod]/[proyecto]/ + tag [cod]-[proyecto].
+  //
+  // Para ENCENDERLO, pon cloud: "realidades" cuando ya estén las dos cosas:
+  //   1) en Settings > Security, "Resource list" DESTILDADO (viene restringido:
+  //      si sigue tildado el endpoint da 401 y la galería cae a galeria.json),
+  //   2) las fotos subidas con el tag de abajo.
+  // Al subir, opcionales: context "caption" (pie), "alt" (accesible),
+  // "orden" (posición); tag "destacada" = celda grande en el bento.
+  galeria: {
+    cloud: "",
+    tag: "cma-lanave"
+  }
 };
