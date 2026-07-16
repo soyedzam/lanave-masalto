@@ -660,11 +660,54 @@ html.lb-lock { overflow: hidden; }
 .hito-meta .hito-foto { box-shadow: 0 0 0 1.5px rgba(242, 145, 0, 0.55), 0 16px 36px -26px rgba(242, 145, 0, 0.45); }
 .hito-meta .hito-titulo { color: var(--naranja); }
 
+/* la Nave bajo lona: se levanta, todavía no se muestra */
+.hito-velo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(120% 100% at 50% 8%, var(--carbon-soft), var(--carbon-deep) 72%);
+}
+.velo-carpa {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s var(--ease-spring);
+}
+.velo-lona { fill: #3A3831; }
+.velo-franja { fill: #2A2924; }
+.velo-borde {
+  fill: none;
+  stroke: rgba(242, 145, 0, 0.5);
+  stroke-width: 2;
+}
+.velo-tensor {
+  stroke: rgba(244, 241, 234, 0.16);
+  stroke-width: 1;
+}
+.velo-banderin { fill: var(--naranja); }
+.velo-punta { fill: var(--bronce); }
+.velo-sello {
+  position: relative;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hueso);
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(244, 241, 234, 0.28);
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--carbon-deep) 72%, transparent);
+  backdrop-filter: blur(2px);
+}
+.hito-lugar:hover .velo-carpa { transform: translateY(-4px); }
+
 @media (max-width: 640px) {
   .historia { grid-auto-columns: 76vw; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hito-foto img, .hito-lugar:hover .hito-foto img { transition: none; transform: none; }
+  .velo-carpa, .hito-lugar:hover .velo-carpa { transition: none; transform: none; }
 }
 
 @media (max-width: 760px) {
