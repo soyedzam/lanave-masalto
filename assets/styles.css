@@ -561,6 +561,35 @@ svg { display: block; }
 }
 .cta-url-final { color: var(--piedra); }
 
+.final-links {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.final-links a {
+  color: var(--hueso);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--hairline-dark);
+  border-radius: var(--radius-pill);
+  transition: border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+}
+.final-links a:hover {
+  color: var(--naranja);
+  border-color: var(--naranja);
+  background: color-mix(in srgb, var(--naranja) 10%, transparent);
+}
+.final-links-sep { color: var(--piedra); }
+@media (max-width: 460px) {
+  .final-links-sep { display: none; }
+  .final-links { flex-direction: column; }
+}
+
 .site-footer {
   margin-top: var(--space-band);
   padding: 1.6rem;

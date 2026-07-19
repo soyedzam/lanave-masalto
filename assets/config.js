@@ -25,10 +25,10 @@ window.LANAVE = {
   mensajeWhatsApp: "Hola 👋 Quiero tomar mi lugar en La Nave.",
 
   // — URL que se muestra como referencia en la página —
-  urlDisplay: "masalto.org/lanave",
+  urlDisplay: "lanave.comunidadmasalto.org",
 
   // — Texto del botón «Compártelo» (WhatsApp / hoja de compartir del teléfono) —
-  compartir: "Más Alto: La Nave es el primer lugar que es nuestro — para nuestras familias y para estar con Dios. La levantamos entre todos, 250 ladrillos. Toma el tuyo 👉 masalto.org/lanave",
+  compartir: "Más Alto: La Nave es el primer lugar que es nuestro — para nuestras familias y para estar con Dios. La levantamos entre todos, 250 ladrillos. Toma el tuyo 👉 lanave.comunidadmasalto.org",
 
   // — Avance automático (opcional) —
   // URL de un JSON público con el corte vivo: {"tomados": 37, "fechaCorte": "2026-07-11"}

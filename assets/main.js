@@ -81,7 +81,7 @@ function iniciarCompartir() {
   const btn = document.getElementById("js-compartir");
   if (!btn) return;
 
-  const texto = cfg.compartir || "Toma tu lugar en La Nave 👉 masalto.org/lanave";
+  const texto = cfg.compartir || "Toma tu lugar en La Nave 👉 lanave.comunidadmasalto.org";
 
   btn.addEventListener("click", async () => {
     medir("compartir");
