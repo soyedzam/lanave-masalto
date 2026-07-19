@@ -929,6 +929,16 @@ html.lb-lock { overflow: hidden; }
 }
 .celda.es-tomada.es-viva { opacity: 1; }
 
+/* el siguiente ladrillo late — la ranura que te espera (psicología sutil) */
+.celda.es-proxima {
+  animation: celdaProxima 1.9s var(--ease-inout) infinite;
+}
+@keyframes celdaProxima {
+  0%, 100% { fill: rgba(242, 145, 0, 0.08); stroke: rgba(242, 145, 0, 0.5);  stroke-width: 1; }
+  50%      { fill: rgba(242, 145, 0, 0.30); stroke: rgba(242, 145, 0, 0.95); stroke-width: 1.4; }
+}
+.es-lite .celda.es-proxima { animation: none; fill: rgba(242, 145, 0, 0.2); stroke: rgba(242, 145, 0, 0.7); }
+
 .muro-puerta { stroke: var(--bronce); stroke-width: 1.4; opacity: 0.85; }
 .muro-umbral { stroke: var(--naranja); stroke-width: 2; opacity: 0.5; }
 
@@ -1386,6 +1396,7 @@ html.lb-lock { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .t-caption, .celda, .celda.es-tomada, .zarpe { transition: none; }
+  .celda.es-proxima { animation: none; fill: rgba(242, 145, 0, 0.2); stroke: rgba(242, 145, 0, 0.7); }
   .zarpe { transform: translate(-50%, 0); }
   .zarpe:not(.es-visible) { display: none; }
 }
@@ -1432,22 +1443,31 @@ html.lb-lock { overflow: hidden; }
 }
 .latido-core {
   position: relative;
-  width: 44%;
-  height: 44%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 40%, #FFC24D 0%, var(--naranja) 44%, var(--bronce) 100%);
+  width: 50%;
+  height: 50%;
+  display: grid;
+  place-items: center;
   transform: translateZ(0);
   animation: latidoPulso 1.6s var(--ease-inout) infinite;
   will-change: transform;
 }
+.latido-heart {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter:
+    drop-shadow(0 0 16px rgba(242, 145, 0, 0.6))
+    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));
+}
 .latido-core::before {   /* el resplandor que respira con el latido */
   content: "";
   position: absolute;
-  inset: -74%;
+  inset: -66%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(242, 145, 0, 0.5) 0%, rgba(242, 145, 0, 0) 62%);
+  background: radial-gradient(circle, rgba(242, 145, 0, 0.48) 0%, rgba(242, 145, 0, 0) 62%);
   animation: latidoBloom 1.6s var(--ease-inout) infinite;
   will-change: transform, opacity;
+  z-index: -1;
 }
 .latido-eco {   /* ecos que emanan en cada latido, como un sonar */
   position: absolute;

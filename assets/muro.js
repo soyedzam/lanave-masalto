@@ -143,9 +143,13 @@ export function iniciarMuro() {
 
     rects.forEach((r) => {
       const tomada = r.orden < e.tomados;
+      /* el siguiente ladrillo late: la ranura que te espera (invitación sutil) */
+      r.rect.classList.toggle("es-proxima", !e.completo && r.orden === e.tomados);
       r.titulo.textContent = tomada
         ? "Ladrillo tomado · gracias"
-        : "Ladrillo disponible · toca para tomarlo";
+        : (r.orden === e.tomados && !e.completo
+            ? "El siguiente ladrillo · toca para tomarlo"
+            : "Ladrillo disponible · toca para tomarlo");
       if (tomada && !r.rect.classList.contains("es-tomada")) {
         r.rect.classList.add("es-tomada");
         if (animar && !reduceMotion) {
