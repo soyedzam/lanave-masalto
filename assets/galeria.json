@@ -1,14 +1,120 @@
 [
-  { "tipo": "foto",  "src": "assets/hero-comunidad.jpg",           "size": "big",  "cap": "Bautizos en el mar — nuevos comienzos.",     "alt": "Bautizos de la comunidad en el mar" },
-  { "tipo": "foto",  "src": "assets/comunidad-atardecer.jpg",      "size": "tall", "cap": "Reunidos al atardecer.",                     "alt": "Reunión de la comunidad al atardecer" },
-  { "tipo": "video", "src": "assets/video/nave-01-carpa.mp4",      "poster": "assets/video-poster.jpg", "cap": "No es una carpa.",   "alt": "Video: no es una carpa" },
-  { "tipo": "foto",  "src": "assets/comunidad-llena.jpg",          "cap": "Un domingo — y ya no cabemos.",              "alt": "La congregación llena un domingo" },
-  { "tipo": "video", "src": "assets/video/nave-02-hijos.mp4",      "poster": "assets/video-poster.jpg", "cap": "Donde nuestros hijos van a crecer.", "alt": "Video: donde crecen nuestros hijos" },
-  { "tipo": "foto",  "src": "assets/cena-comunidad.jpg",           "size": "tall", "cap": "Cena de comunidad.",                        "alt": "Cena de la comunidad" },
-  { "tipo": "foto",  "src": "assets/comunidad-unica.jpg",          "size": "tall", "cap": "Noche de mujeres — comunidad Única.",       "alt": "Evento de la comunidad Única al aire libre" },
-  { "tipo": "foto",  "src": "assets/boliche-adoracion.jpg",        "size": "wide", "cap": "Adoración en el boliche — manos en alto.",  "alt": "La comunidad en adoración con las manos en alto" },
-  { "tipo": "foto",  "src": "assets/boliche-culto.jpg",            "cap": "Culto de domingo, todos juntos.",            "alt": "Culto de domingo de la comunidad" },
-  { "tipo": "video", "src": "assets/video/nave-03-cada-lugar.mp4", "poster": "assets/video-poster.jpg", "cap": "Cada ladrillo acerca ese día.", "alt": "Video: cada ladrillo acerca ese día" },
-  { "tipo": "foto",  "src": "assets/comunidad-agua.jpg",           "cap": "En el agua, juntos.",                        "alt": "La comunidad en el agua" },
-  { "tipo": "foto",  "src": "assets/nave-construccion.jpg",        "size": "wide", "cap": "La Nave, levantándose ahora.", "alt": "La estructura de acero de La Nave en construcción" }
+  {
+    "tipo": "foto",
+    "src": "assets/culto-vela.jpg",
+    "size": "big",
+    "cap": "Adoración, con el corazón encendido.",
+    "alt": "Mujer en adoración sosteniendo una vela"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/hero-comunidad.jpg",
+    "size": "wide",
+    "cap": "Bautizos en el mar — nuevos comienzos.",
+    "alt": "Bautizos de la comunidad en el mar"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-manos.jpg",
+    "size": "tall",
+    "cap": "Manos en alto.",
+    "alt": "Persona mayor en adoración con las manos en alto"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-percusion.jpg",
+    "cap": "El pulso de la alabanza.",
+    "alt": "Músico tocando percusión en el culto"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/boliche-adoracion.jpg",
+    "size": "wide",
+    "cap": "Adoración en el boliche — manos en alto.",
+    "alt": "La comunidad en adoración con las manos en alto"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/comunidad-atardecer.jpg",
+    "size": "tall",
+    "cap": "Reunidos al atardecer.",
+    "alt": "Reunión de la comunidad al atardecer"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-voz.jpg",
+    "cap": "Levantando la voz, juntos.",
+    "alt": "Hombre cantando al micrófono en el culto"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-madre-hijo.jpg",
+    "size": "tall",
+    "cap": "En brazos, cerca de Dios.",
+    "alt": "Madre cargando a su hijo durante la adoración"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/comunidad-unica.jpg",
+    "size": "tall",
+    "cap": "Noche de mujeres — comunidad Única.",
+    "alt": "Evento de la comunidad Única al aire libre"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-palabra.jpg",
+    "cap": "La Palabra, generación tras generación.",
+    "alt": "Persona mayor leyendo la Biblia"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/comunidad-llena.jpg",
+    "size": "wide",
+    "cap": "Un domingo — y ya no cabemos.",
+    "alt": "La congregación llena un domingo"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-guitarra.jpg",
+    "cap": "La música que nos une.",
+    "alt": "Músico tocando la guitarra en el culto"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/sala-casa.jpg",
+    "cap": "La sala de una casa — donde empezamos.",
+    "alt": "La banda tocando en la sala de una casa"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-nino.jpg",
+    "size": "tall",
+    "cap": "Los que vienen, ya cantan.",
+    "alt": "Un niño cantando en el culto"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/frente-boliche.jpg",
+    "cap": "Un salón rentado, frente al boliche.",
+    "alt": "El salón rentado frente al boliche"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/culto-oracion.jpg",
+    "cap": "Un momento de oración.",
+    "alt": "Momento de oración durante el culto"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/boliche-culto.jpg",
+    "cap": "Culto de domingo, todos juntos.",
+    "alt": "Culto de domingo de la comunidad"
+  },
+  {
+    "tipo": "foto",
+    "src": "assets/comunidad-agua.jpg",
+    "size": "wide",
+    "cap": "En el agua, juntos.",
+    "alt": "La comunidad en el agua"
+  }
 ]
