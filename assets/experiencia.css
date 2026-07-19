@@ -972,6 +972,13 @@ html.lb-lock { overflow: hidden; }
   color: color-mix(in srgb, var(--hueso) 80%, transparent);
 }
 .muro-cta { text-align: center; margin-top: 2.2rem; }
+.muro-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem 1rem;
+  margin-top: 1.6rem;
+}
 /* — la meta de la causa: 250 × $3,850 = $962,500 — */
 .meta-causa { margin-top: 2.6rem; text-align: center; }
 .meta-causa-label {

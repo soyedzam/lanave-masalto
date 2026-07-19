@@ -62,7 +62,7 @@ export function iniciarVideo() {
       v.muted = !v.muted;
       const conSonido = !v.muted;
       btn.setAttribute("aria-pressed", String(conSonido));
-      btn.textContent = conSonido ? "🔊 Silenciar" : "🔇 Activar sonido";
+      btn.textContent = conSonido ? "Silenciar" : "Activar sonido";
       if (conSonido) { v.play().catch(function () {}); medir("video_sonido"); }
     });
   }
