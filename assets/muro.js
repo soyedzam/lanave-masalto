@@ -1,7 +1,10 @@
-/* LA NAVE · el Muro de los 258 — la fachada hecha de lugares.
-   258 celdas dibujan el frente de la nave: hastial de 2·6·10·14,
+/* LA NAVE · el Muro de los 250 — la fachada hecha de ladrillos.
+   250 celdas dibujan el frente de la nave: hastial de 4·8·12,
    cuerpo de 12 filas de 18 y, abajo, la puerta abierta (8 de ancho)
-   flanqueada por 5 y 5. 2+6+10+14 + 12×18 + 10 = 258, exacto.
+   flanqueada por 5 y 5. 4+8+12 + 12×18 + 10 = 250, exacto.
+
+   Si la meta cambia, hay que rearmar filasFachada() para que la suma
+   coincida con cfg.meta (ver el aviso en config.js).
 
    Se enciende de abajo hacia arriba, del centro hacia afuera —
    como se levanta un muro de verdad. Sin nombres: solo el conteo real. */
@@ -10,6 +13,8 @@ import { estado, alCambiar } from "./datos.js";
 import { medir } from "./medir.js";
 
 const COLS = 18;
+const FILAS = 16;      // 3 de hastial + 12 de cuerpo + 1 de puerta
+const FILA_PUERTA = 15;
 const U = 30;          // paso de la retícula
 const CELDA = 24;      // lado de cada celda
 const RADIO = 3;
@@ -17,15 +22,14 @@ const RADIO = 3;
 /* filas de arriba hacia abajo: [fila, colInicio, cantidad] */
 function filasFachada() {
   const filas = [
-    [0, 8, 2],
-    [1, 6, 6],
-    [2, 4, 10],
-    [3, 2, 14]
+    [0, 7, 4],
+    [1, 5, 8],
+    [2, 3, 12]
   ];
-  for (let r = 4; r <= 15; r++) filas.push([r, 0, 18]);
+  for (let r = 3; r <= 14; r++) filas.push([r, 0, 18]);
   /* fila de la puerta: 5 + hueco de 8 + 5 */
-  filas.push([16, 0, 5, "izq"]);
-  filas.push([16, 13, 5, "der"]);
+  filas.push([FILA_PUERTA, 0, 5, "izq"]);
+  filas.push([FILA_PUERTA, 13, 5, "der"]);
   return filas;
 }
 
@@ -63,16 +67,15 @@ export function iniciarMuro() {
   if (!monte) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const filas = 17;
   const ancho = COLS * U;
-  const alto = filas * U;
+  const alto = FILAS * U;
   const margen = (U - CELDA) / 2;
 
   const svg = el("svg", {
     class: "muro-svg",
     viewBox: "0 0 " + ancho + " " + (alto + 14),
     role: "img",
-    "aria-label": "La fachada de La Nave dibujada con 258 ladrillos; los ladrillos ya tomados están encendidos y el avance se detalla en los contadores debajo."
+    "aria-label": "La fachada de La Nave dibujada con " + (estado().meta || 250) + " ladrillos; los ladrillos ya tomados están encendidos y el avance se detalla en los contadores debajo."
   });
 
   /* degradado de lugar tomado: bronce → naranja, la chispa de la marca */
@@ -111,7 +114,7 @@ export function iniciarMuro() {
   /* la puerta abierta: umbral cálido en el hueco de la fila baja */
   const puertaX = 5 * U + margen;
   const puertaW = 8 * U - margen * 2;
-  const puertaY = 16 * U + margen;
+  const puertaY = FILA_PUERTA * U + margen;
   svg.appendChild(el("path", {
     d: "M" + puertaX + " " + (puertaY + CELDA) +
        " L" + puertaX + " " + (puertaY + 6) +
@@ -134,7 +137,7 @@ export function iniciarMuro() {
   function pinta(animar) {
     const e = estado();
     svg.setAttribute("aria-label",
-      "El Muro de los 258: la fachada de La Nave dibujada con " + e.meta +
+      "El Muro: la fachada de La Nave dibujada con " + e.meta +
       " ladrillos. " + e.tomados + " tomados, " + e.disponibles +
       " disponibles. Se enciende de abajo hacia arriba y la puerta queda abierta.");
 
@@ -160,7 +163,7 @@ export function iniciarMuro() {
     const nota = document.getElementById("js-muro-nota");
     if (nota) {
       nota.textContent = e.completo
-        ? "Los 258 ladrillos están tomados. La Nave se levanta completa."
+        ? "Los " + e.meta + " ladrillos están tomados. La Nave se levanta completa."
         : e.tomados + " encendidos · " + e.disponibles + " por encender — el siguiente es el ladrillo #" + e.siguiente + ".";
     }
     const btn = document.getElementById("js-muro-cta");

@@ -23,7 +23,7 @@ export function formatoFecha(iso) {
 }
 
 function derivar(cfg) {
-  const meta = cfg.meta || 258;
+  const meta = cfg.meta || 250;
   const tomados = Math.max(0, Math.min(meta, Number(cfg.tomados) || 0));
   const disponibles = meta - tomados;
   const dias = Math.max(0, Math.round((fechaLocal(cfg.cierre) - hoyLocal()) / MS_DIA));
