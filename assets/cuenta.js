@@ -76,7 +76,7 @@ export function iniciarContadores() {
     const wrap = document.getElementById("js-progress-wrap");
     if (wrap) {
       wrap.setAttribute("aria-label",
-        "Avance del Fondo Fundadores: " + e.tomados + " de " + e.meta + " ladrillos, " + e.pct + " por ciento");
+        "Avance de la causa: " + e.tomados + " de " + e.meta + " ladrillos, " + e.pct + " por ciento");
     }
     const corte = document.getElementById("js-corte");
     if (corte && e.fechaCorte) {

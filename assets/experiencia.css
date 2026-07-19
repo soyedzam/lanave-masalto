@@ -1,4 +1,4 @@
-/* LA NAVE · experiencia v2 — travesía cinematográfica, Muro de los 258,
+/* LA NAVE · experiencia v2 — travesía cinematográfica, Muro de los 250,
    cuenta regresiva y barra de zarpe. Extiende styles.css; mismos tokens. */
 
 /* ---------- utilidades ---------- */
@@ -895,7 +895,7 @@ html.lb-lock { overflow: hidden; }
 .t-persona circle { fill: var(--hueso); }
 .t-persona path { stroke: var(--hueso); stroke-width: 5; stroke-linecap: round; fill: none; }
 
-/* ---------- el Muro de los 258 ---------- */
+/* ---------- el Muro de los 250 ---------- */
 
 .muro-figura {
   margin-top: var(--space-block);
@@ -962,7 +962,7 @@ html.lb-lock { overflow: hidden; }
   color: color-mix(in srgb, var(--hueso) 80%, transparent);
 }
 .muro-cta { text-align: center; margin-top: 2.2rem; }
-/* — la meta de la causa: 258 × $3,850 = $993,300 — */
+/* — la meta de la causa: 250 × $3,850 = $962,500 — */
 .meta-causa { margin-top: 2.6rem; text-align: center; }
 .meta-causa-label {
   font-size: 0.72rem;
@@ -1388,4 +1388,151 @@ html.lb-lock { overflow: hidden; }
   .t-caption, .celda, .celda.es-tomada, .zarpe { transition: none; }
   .zarpe { transform: translate(-50%, 0); }
   .zarpe:not(.es-visible) { display: none; }
+}
+
+/* ---------- el latido · el corazón de la comunidad ---------- */
+.latido {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(58rem 40rem at 50% 46%, rgba(242, 145, 0, 0.11), transparent 62%),
+    radial-gradient(90rem 40rem at 50% -10%, rgba(184, 134, 47, 0.07), transparent 60%),
+    var(--carbon);
+}
+.latido-inner { position: relative; z-index: 2; }
+.latido-title { margin-inline: auto; max-width: 20ch; }
+.latido-word { color: var(--naranja); font-style: italic; }
+
+/* embers: mismo lenguaje que el hero, más tenues */
+.latido-embers { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.latido-embers i {
+  position: absolute;
+  bottom: -12px;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 145, 0, 0.9), rgba(242, 145, 0, 0));
+  opacity: 0;
+  animation: heroEmber linear infinite;
+}
+.latido-embers i:nth-child(1) { left: 18%; animation-duration: 14s;   animation-delay: 0s; }
+.latido-embers i:nth-child(2) { left: 36%; animation-duration: 17s;   animation-delay: 4s; }
+.latido-embers i:nth-child(3) { left: 52%; animation-duration: 12s;   animation-delay: 7.5s; }
+.latido-embers i:nth-child(4) { left: 68%; animation-duration: 15.5s; animation-delay: 2.2s; }
+.latido-embers i:nth-child(5) { left: 83%; animation-duration: 13s;   animation-delay: 9s; }
+
+/* el núcleo que late */
+.latido-nucleo {
+  position: relative;
+  width: clamp(150px, 34vw, 236px);
+  height: clamp(150px, 34vw, 236px);
+  margin: clamp(2.4rem, 5vw, 4rem) auto;
+  display: grid;
+  place-items: center;
+}
+.latido-core {
+  position: relative;
+  width: 44%;
+  height: 44%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #FFC24D 0%, var(--naranja) 44%, var(--bronce) 100%);
+  transform: translateZ(0);
+  animation: latidoPulso 1.6s var(--ease-inout) infinite;
+  will-change: transform;
+}
+.latido-core::before {   /* el resplandor que respira con el latido */
+  content: "";
+  position: absolute;
+  inset: -74%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 145, 0, 0.5) 0%, rgba(242, 145, 0, 0) 62%);
+  animation: latidoBloom 1.6s var(--ease-inout) infinite;
+  will-change: transform, opacity;
+}
+.latido-eco {   /* ecos que emanan en cada latido, como un sonar */
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(242, 145, 0, 0.45);
+  opacity: 0;
+  transform: scale(0.42);
+  animation: latidoEco 1.6s var(--ease-out) infinite;
+  will-change: transform, opacity;
+}
+.latido-eco:nth-child(1) { animation-delay: 0s; }
+.latido-eco:nth-child(2) { animation-delay: 0.53s; }
+.latido-eco:nth-child(3) { animation-delay: 1.06s; }
+
+@keyframes latidoPulso {   /* lub-dub y descanso, como un corazón de verdad */
+  0%   { transform: scale(1); }
+  8%   { transform: scale(1.09); }
+  16%  { transform: scale(1); }
+  26%  { transform: scale(1.15); }
+  38%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+@keyframes latidoBloom {
+  0%, 100% { transform: scale(1);    opacity: 0.5; }
+  8%       { transform: scale(1.12); opacity: 0.78; }
+  26%      { transform: scale(1.22); opacity: 0.92; }
+  38%      { transform: scale(1);    opacity: 0.5; }
+}
+@keyframes latidoEco {
+  0%   { transform: scale(0.42); opacity: 0; }
+  12%  { opacity: 0.5; }
+  70%  { opacity: 0; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* los tres versos · los tres niveles */
+.latido-versos {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 32ch;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 1rem + 1.5vw, 2rem);
+  line-height: 1.28;
+  color: var(--hueso);
+}
+.latido-versos li { opacity: 1; }
+.reveal.is-in .latido-versos li {
+  animation: latidoVerso 0.85s var(--ease-out) both;
+  animation-delay: var(--b, 0s);
+}
+@keyframes latidoVerso {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.latido-cierre {
+  margin: clamp(2.4rem, 4vw, 3.6rem) auto 0;
+  max-width: 42ch;
+  font-size: var(--text-lg);
+  color: color-mix(in srgb, var(--hueso) 80%, transparent);
+}
+.latido-cierre em {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--naranja);
+}
+
+/* lite y movimiento reducido: el corazón se queda encendido, sin latir */
+.es-lite .latido-embers { display: none; }
+.es-lite .latido-core,
+.es-lite .latido-core::before,
+.es-lite .latido-eco { animation: none; }
+.es-lite .latido-eco { opacity: 0.16; transform: scale(1.05); }
+.es-lite .latido-core::before { opacity: 0.62; }
+
+@media (prefers-reduced-motion: reduce) {
+  .latido-embers i,
+  .latido-core,
+  .latido-core::before,
+  .latido-eco { animation: none; }
+  .latido-eco { opacity: 0.16; transform: scale(1.05); }
+  .latido-core::before { opacity: 0.62; }
+  .reveal.is-in .latido-versos li { animation: none; }
 }
