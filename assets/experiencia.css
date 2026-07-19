@@ -972,13 +972,30 @@ html.lb-lock { overflow: hidden; }
   color: color-mix(in srgb, var(--hueso) 80%, transparent);
 }
 .muro-cta { text-align: center; margin-top: 2.2rem; }
-.muro-links {
-  display: flex;
-  flex-wrap: wrap;
+
+/* indicador "en vivo": el avance late en la sección de los ladrillos */
+.label-vivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   justify-content: center;
-  gap: 0.8rem 1rem;
-  margin-top: 1.6rem;
 }
+.label-center.label-vivo { display: flex; }
+.vivo-dot {
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 50%;
+  background: var(--naranja);
+  box-shadow: 0 0 0 0 rgba(242, 145, 0, 0.6);
+  animation: vivoLatido 1.6s var(--ease-inout) infinite;
+}
+@keyframes vivoLatido {
+  0%   { box-shadow: 0 0 0 0 rgba(242, 145, 0, 0.6); }
+  70%  { box-shadow: 0 0 0 0.7em rgba(242, 145, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 145, 0, 0); }
+}
+.es-lite .vivo-dot { animation: none; }
+@media (prefers-reduced-motion: reduce) { .vivo-dot { animation: none; } }
 /* — la meta de la causa: 250 × $3,850 = $962,500 — */
 .meta-causa { margin-top: 2.6rem; text-align: center; }
 .meta-causa-label {

@@ -35,13 +35,6 @@
   },
   {
     "tipo": "foto",
-    "src": "assets/comunidad-atardecer.jpg",
-    "size": "tall",
-    "cap": "Reunidos al atardecer.",
-    "alt": "Reunión de la comunidad al atardecer"
-  },
-  {
-    "tipo": "foto",
     "src": "assets/culto-voz.jpg",
     "cap": "Levantando la voz, juntos.",
     "alt": "Hombre cantando al micrófono en el culto"
