@@ -5,7 +5,7 @@
 window.LANAVE = {
   // — Corte de avance (actualizar con cada corte real) —
   tomados: 61,
-  fechaCorte: "2026-07-26",
+  fechaCorte: "2026-07-31",
 
   // — Constantes de campaña —
   // OJO: la meta define la fachada del Muro. Si cambia, hay que rearmar la
