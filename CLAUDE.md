@@ -23,10 +23,10 @@ y avisa a Ed del duplicado — el código nunca vive bajo `~/Documents` (iCloud 
 ## 2 · El canon manda — se LEE antes de escribir, nunca de memoria
 | Tarea | Doc en el hub |
 |---|---|
-| Nombrar archivos | `00_EMPIEZA-AQUI/ECO_OPS_DOC_Nomenclatura-Canon_260801_v1.3.md` |
-| Dónde cae cada archivo (**el YAML manda**) | `_SISTEMA/SIS_GEN_DAT_Reglas-de-Archivado_260801_v1.4.yaml` |
+| Nombrar archivos | `00_EMPIEZA-AQUI/ECO_OPS_DOC_Nomenclatura-Canon_260804_v1.4.md` |
+| Dónde cae cada archivo (**el YAML manda**) | `_SISTEMA/SIS_GEN_DAT_Reglas-de-Archivado_260804_v1.5.yaml` |
 | Voz y vocabulario | `00_EMPIEZA-AQUI/ECO_OPS_DOC_Lexico-Canon_260627_v1.0.md` |
-| Códigos `[COD]` de las Realidades | `00_EMPIEZA-AQUI/SIS_GEN_IDX_Registro-de-Entidades_260731_v2.3.md` |
+| Códigos `[COD]` de las Realidades | `00_EMPIEZA-AQUI/SIS_GEN_IDX_Registro-de-Entidades_260730_v2.4.md` |
 | **Crear una Realidad nueva** (el árbol y los 8 pasos) | `_SISTEMA/SIS_GEN_DOC_Realidad-en-Caja_260703_v1.0.md` |
 | Capacitar a un chat/agente externo | `_SISTEMA/SIS_GEN_PRM_Pase-de-Abordaje-Chats_260801_v1.3.md` |
 
