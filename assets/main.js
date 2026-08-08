@@ -10,6 +10,7 @@ import { iniciarHero } from "./hero.js";
 import { iniciarScroll } from "./scroll.js";
 import { iniciarGaleria } from "./galeria.js";
 import { iniciarVsl } from "./vsl.js";
+import { iniciarEvidencia } from "./evidencia.js";
 import { iniciarInteracciones, esLite } from "./interacciones.js";
 import { iniciarExtras } from "./extras.js";
 
@@ -161,6 +162,7 @@ iniciarHero();
 iniciarScroll();
 iniciarGaleria();
 iniciarVsl();
+iniciarEvidencia();
 if (esLite()) document.documentElement.classList.add("es-lite");
 iniciarInteracciones();
 iniciarExtras();

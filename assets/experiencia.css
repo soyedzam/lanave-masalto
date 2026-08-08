@@ -1707,3 +1707,36 @@ html.lb-lock { overflow: hidden; }
   font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.4rem);
   font-style: italic;
 }
+/* — la tarjeta abre el comprobante — */
+.ev-acta {
+  cursor: pointer;
+  transition: border-left-color var(--dur) var(--ease-out),
+              box-shadow var(--dur) var(--ease-out);
+}
+.ev-acta:hover { border-left-color: var(--naranja-hover); box-shadow: 0 6px 26px rgba(43, 42, 38, 0.09); }
+.ev-ver {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid var(--hairline-light);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease-out),
+              color var(--dur) var(--ease-out),
+              transform var(--dur) var(--ease-spring);
+}
+.ev-ver:hover { border-color: var(--naranja); color: var(--naranja); transform: translateY(-2px); }
+/* el comprobante es un documento vertical: cabe alto y se lee */
+.lb-doc .lb-medio { max-width: min(92vw, 46rem); }
+.lb-doc .lb-img { background: #fff; border-radius: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .ev-acta, .ev-ver { transition: none; }
+  .ev-ver:hover { transform: none; }
+}

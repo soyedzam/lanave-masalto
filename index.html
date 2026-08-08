@@ -528,11 +528,12 @@
         <h2 id="evidencia-heading" class="title-xl title-center">Tu ladrillo ya está trabajando.</h2>
         <p class="ev-lede">No estamos juntando dinero para ver qué pasa. La estructura ya está encargada y el primer pago ya salió.</p>
 
-        <article class="ev-acta">
+        <article class="ev-acta" id="js-ev-acta">
           <p class="ev-acta-fecha">8 de julio de 2026</p>
           <h3 class="ev-acta-titulo">Anticipo de la estructura</h3>
           <p class="ev-acta-monto"><span class="ev-monto-num">$300,000</span></p>
-          <p class="ev-acta-detalle">Abonados a <strong>Soportec</strong>, la empresa de Mérida que fabrica e instala la estructura de La&nbsp;Nave. El recibo está en resguardo de la comunidad.</p>
+          <p class="ev-acta-detalle">Abonados a <strong>Soportec</strong>, la empresa de Mérida que fabrica e instala la estructura de La&nbsp;Nave.</p>
+          <a class="ev-ver" id="js-ev-ver" href="assets/evidencia-recibo-soportec.jpg">Ver el comprobante</a>
         </article>
 
         <p class="ev-cierre">Cada ladrillo que entra va al mismo lugar: a que La Nave esté de pie.</p>
@@ -857,6 +858,18 @@
     <button class="lb-nav lb-next" type="button" aria-label="Siguiente">›</button>
     <p class="lb-cap"></p>
     <span class="lb-contador"></span>
+  </div>
+
+  <!-- Comprobante del anticipo. Lightbox propio (no el de la galería) para no
+       compartir estado ni navegación prev/next con las fotos. -->
+  <div class="lightbox lb-doc" id="js-lb-evidencia" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Comprobante del anticipo a Soportec">
+    <button class="lb-cerrar" type="button" aria-label="Cerrar comprobante">✕</button>
+    <div class="lb-medio">
+      <!-- Fachada diferida (mismo patrón que el VSL): sin src hasta que se pide.
+           `loading=lazy` NO sirve aquí — dentro de display:none nunca dispara. -->
+      <img class="lb-img" id="js-ev-img" data-src="assets/evidencia-recibo-soportec.jpg" alt="Recibo de dinero en papel membretado de Soportec, Mérida, fechado el 8 de julio de 2026: hace constar el pago de $300,000.00 pesos como abono al servicio de suministro, fabricación e instalación de carpas desmontables, referencia i1474." width="1076" height="1400" decoding="async">
+    </div>
+    <p class="lb-cap">Recibo del anticipo · 8 de julio de 2026. La firma va difuminada: es la rúbrica de una persona del proveedor.</p>
   </div>
 
   <script src="assets/config.js"></script>
