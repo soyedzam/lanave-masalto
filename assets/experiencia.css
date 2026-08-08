@@ -1648,3 +1648,62 @@ html.lb-lock { overflow: hidden; }
   .latido-core::before { opacity: 0.62; }
   .reveal.is-in .latido-versos li { animation: none; }
 }
+
+/* ============================================================
+   EN QUÉ VA TU LADRILLO · evidencia de la causa
+   Un "acta" por pago real y comprobado. El comprobante NO vive
+   en el sitio (es un documento de terceros): aquí va el hito.
+   ============================================================ */
+.ev-lede {
+  max-width: 46ch;
+  margin: 1.6rem auto 0;
+  text-align: center;
+  color: color-mix(in srgb, currentColor 82%, transparent);
+}
+.ev-acta {
+  margin-top: 2.8rem;
+  padding: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  background: var(--hueso-deep);
+  border: 1px solid var(--hairline-light);
+  border-left: 3px solid var(--naranja);
+  border-radius: 3px;
+  text-align: center;
+}
+.ev-acta-fecha {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronce);
+}
+.ev-acta-titulo {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1.1rem + 1.1vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-top: 0.7rem;
+}
+.ev-acta-monto { margin: 0; }
+.ev-monto-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 1.8rem + 3.4vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--naranja);
+  font-variant-numeric: tabular-nums;
+  margin: 1rem 0 0.2rem;
+}
+.ev-acta-detalle {
+  max-width: 42ch;
+  margin: 0.9rem auto 0;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, currentColor 78%, transparent);
+}
+.ev-cierre {
+  margin-top: 2.2rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.4rem);
+  font-style: italic;
+}
