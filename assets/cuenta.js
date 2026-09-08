@@ -8,10 +8,12 @@ function pad(n) {
   return String(n).padStart(2, "0");
 }
 
-/* — Cuenta regresiva (días · hh:mm:ss) hacia el fin del 31 de julio — */
+/* — Cuenta regresiva hacia el fin del día de `cierre`.
+     Si `cierre` viene vacío en config, no arranca: la causa no tiene plazo. — */
 export function iniciarCuentaRegresiva() {
   const destinos = Array.from(document.querySelectorAll("[data-cuenta]"));
-  if (!destinos.length) return;
+  /* Sin plazo no hay reloj: `cierre` vacío en config apaga la cuenta regresiva. */
+  if (!destinos.length || !estado().hayCierre) return;
 
   function tic() {
     const fin = estado().cierreFin.getTime();
@@ -80,8 +82,7 @@ export function iniciarContadores() {
     }
     const corte = document.getElementById("js-corte");
     if (corte && e.fechaCorte) {
-      corte.textContent = "Al corte del " + formatoFecha(e.fechaCorte) +
-        " · días y ritmo se calculan al momento.";
+      corte.textContent = "Al corte del " + formatoFecha(e.fechaCorte) + ".";
     }
     /* hitos de la barra: se encienden solo los alcanzados de verdad */
     [50, 75, 90].forEach((hito) => {
@@ -138,7 +139,11 @@ export function iniciarChips() {
       chipAvance.innerHTML = "<strong>" + e.tomados + "</strong> de " + e.meta + " ladrillos tomados";
     }
     if (chipCierre) {
-      chipCierre.innerHTML = "cierra en <strong>" + e.dias + " " + (e.dias === 1 ? "día" : "días") + "</strong>";
+      if (e.hayCierre) {
+        chipCierre.innerHTML = "cierra en <strong>" + e.dias + " " + (e.dias === 1 ? "día" : "días") + "</strong>";
+      } else {
+        chipCierre.remove();
+      }
     }
     if (heroFill) heroFill.style.width = e.pct + "%";
   }

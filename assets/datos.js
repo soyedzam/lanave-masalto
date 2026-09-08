@@ -26,10 +26,14 @@ function derivar(cfg) {
   const meta = cfg.meta || 250;
   const tomados = Math.max(0, Math.min(meta, Number(cfg.tomados) || 0));
   const disponibles = meta - tomados;
-  const dias = Math.max(0, Math.round((fechaLocal(cfg.cierre) - hoyLocal()) / MS_DIA));
-  const ritmo = dias > 0 ? Math.ceil(disponibles / dias) : disponibles;
+  /* El plazo es opcional: `cierre` vacío = causa abierta, sin cuenta regresiva. */
+  const hayCierre = Boolean(String(cfg.cierre || "").trim());
+  const dias = hayCierre
+    ? Math.max(0, Math.round((fechaLocal(cfg.cierre) - hoyLocal()) / MS_DIA))
+    : null;
+  const ritmo = !hayCierre ? null : (dias > 0 ? Math.ceil(disponibles / dias) : disponibles);
   const pct = Math.round((tomados / meta) * 1000) / 10;
-  const cierreFin = (() => {
+  const cierreFin = !hayCierre ? null : (() => {
     const f = fechaLocal(cfg.cierre);
     return new Date(f.getFullYear(), f.getMonth(), f.getDate(), 23, 59, 59);
   })();
@@ -43,6 +47,7 @@ function derivar(cfg) {
     pct,
     siguiente: Math.min(tomados + 1, meta),
     completo: tomados >= meta,
+    hayCierre,
     fechaCorte: cfg.fechaCorte,
     cierre: cfg.cierre,
     cierreFin

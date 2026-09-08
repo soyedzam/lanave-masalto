@@ -4,15 +4,20 @@
 
 window.LANAVE = {
   // — Corte de avance (actualizar con cada corte real) —
-  tomados: 75,
-  fechaCorte: "2026-07-31",
+  tomados: 84,
+  fechaCorte: "2026-09-01",
 
   // — Constantes de campaña —
   // OJO: la meta define la fachada del Muro. Si cambia, hay que rearmar la
   // geometría en muro.js (hoy suma exactamente 250: hastial 4·8·12 +
   // 12 filas de 18 + puerta 5+5).
   meta: 250,
-  cierre: "2026-07-31",
+
+  // — Cierre de la causa —
+  // VACÍO = la causa sigue abierta y NO se muestra plazo en ningún lado
+  // (ni cuenta regresiva, ni "días", ni "ritmo", ni la barra de zarpe).
+  // Para reabrir un plazo basta poner una fecha "AAAA-MM-DD" aquí.
+  cierre: "",
 
   // — Precio por ladrillo (se muestra en el sitio; editar aquí) —
   precio: 3850,
