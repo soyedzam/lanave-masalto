@@ -181,6 +181,7 @@
     const $ = (id) => document.getElementById(id);
 
     function animaNum(el, hasta, fmt) {
+      if (!el) return; // sin plazo, av-dias y av-ritmo no existen en el DOM
       if (reduce) { el.textContent = fmt ? fmt(hasta) : String(Math.round(hasta)); return; }
       const DUR = 1400; let ini = null;
       function paso(ts) {
@@ -211,8 +212,8 @@
       } else {
         $("av-tomados").textContent = e.tomados;
         $("av-pct").textContent = (Math.round(e.pct * 10) / 10).toString();
-        $("av-dias").textContent = e.dias;
-        $("av-ritmo").textContent = e.ritmo;
+        if ($("av-dias")) $("av-dias").textContent = e.dias;
+        if ($("av-ritmo")) $("av-ritmo").textContent = e.ritmo;
         if (precio) { $("av-levantado").textContent = pesos(e.tomados * precio); $("av-metatotal").textContent = pesos(e.meta * precio); }
       }
       requestAnimationFrame(() => { $("av-fill").style.width = e.pct + "%"; });
