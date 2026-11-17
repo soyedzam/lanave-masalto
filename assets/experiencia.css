@@ -1740,3 +1740,18 @@ html.lb-lock { overflow: hidden; }
   .ev-acta, .ev-ver { transition: none; }
   .ev-ver:hover { transform: none; }
 }
+
+/* ---------- el estreno · 16·nov·2026 ----------
+   Sólo aparece si config.estreno tiene fecha; el HTML nunca la escribe. */
+.chip-estreno {
+  border-color: color-mix(in srgb, var(--naranja) 52%, transparent);
+  color: var(--naranja);
+  font-weight: 600;
+}
+.final-estreno {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 0.9rem + 1.6vw, 2.4rem);
+  font-style: italic;
+  color: var(--naranja);
+  margin-bottom: 0.9rem;
+}

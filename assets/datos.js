@@ -38,6 +38,18 @@ function derivar(cfg) {
     return new Date(f.getFullYear(), f.getMonth(), f.getDate(), 23, 59, 59);
   })();
 
+  /* El estreno es opcional y se deriva igual que el plazo: vacío = no se anuncia nada.
+     La fecha vive SOLO en config.js; ningún HTML la escribe, para que no envejezca ahí. */
+  const hayEstreno = Boolean(String(cfg.estreno || "").trim());
+  const DIAS_SEM = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+  let estrenoHoy = false, estrenoDia = "", estrenoNum = 0;
+  if (hayEstreno) {
+    const f = fechaLocal(cfg.estreno);
+    estrenoHoy = f <= hoyLocal();
+    estrenoDia = DIAS_SEM[f.getDay()];
+    estrenoNum = f.getDate();
+  }
+
   return {
     meta,
     tomados,
@@ -48,6 +60,9 @@ function derivar(cfg) {
     siguiente: Math.min(tomados + 1, meta),
     completo: tomados >= meta,
     hayCierre,
+    hayEstreno,
+    estrenoHoy,
+    estrenoCuando: hayEstreno ? (estrenoHoy ? "Hoy" : "El " + estrenoDia + " " + estrenoNum) : "",
     fechaCorte: cfg.fechaCorte,
     cierre: cfg.cierre,
     cierreFin

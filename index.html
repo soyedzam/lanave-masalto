@@ -164,6 +164,7 @@
         <div class="hero-live hero-in" style="--d:1.45s">
           <div class="chips" role="status">
             <p class="chip chip-live" id="js-chip-avance">84 de 250 ladrillos</p>
+            <p class="chip chip-estreno" id="js-chip-estreno" hidden></p>
           </div>
           <div class="hero-track" aria-hidden="true"><span id="js-hero-fill"></span></div>
         </div>
@@ -403,7 +404,7 @@
                 <path class="velo-banderin" d="M200 46 L200 16 L228 26 L200 36 Z"/>
                 <circle class="velo-punta" cx="200" cy="16" r="4"/>
               </svg>
-              <span class="velo-sello">Aún no se revela</span>
+              <span class="velo-sello" data-estreno-sello>Aún no se revela</span>
             </span>
             <h3 class="hito-titulo">La Nave</h3>
             <p class="hito-desc">Nuestro primer espacio propio&nbsp;— levantándose ahora.</p>
@@ -805,6 +806,7 @@
     <section class="band band-dark band-final" id="final" aria-labelledby="final-heading" data-spotlight>
       <div class="wrap wrap-narrow reveal">
         <img class="final-logo" src="assets/logo-masalto.png" alt="Más Alto · Comunidad Cristiana" width="375" height="236">
+        <p class="final-estreno" data-estreno="{cuando} entramos a La Nave." hidden></p>
         <h2 id="final-heading" class="final-title">Toma tu lugar<br>en <span class="brand-caps">La&nbsp;Nave</span>.</h2>
         <a class="btn btn-lg" id="js-wa-cta-final" href="#tomar" data-cta="final">Toma tu lugar en La Nave</a>
         <p class="cta-url cta-url-final" id="js-url-display-final">lanave.comunidadmasalto.org</p>

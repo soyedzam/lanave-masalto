@@ -127,6 +127,29 @@ export function iniciarContadores() {
   });
 }
 
+/* — El estreno: la fecha en que la comunidad entra a La Nave.
+     Los destinos arrancan ocultos en el HTML y sólo aparecen si config.estreno tiene fecha.
+     Así el HTML nunca afirma un día: si el estreno cambia o se borra, no queda nada viejo. — */
+function pintaEstreno(e) {
+  const chip = document.getElementById("js-chip-estreno");
+  if (chip) {
+    if (e.hayEstreno) {
+      chip.textContent = e.estrenoHoy ? "Hoy entramos a La Nave" : e.estrenoCuando + " entramos";
+      chip.hidden = false;
+    } else { chip.hidden = true; }
+  }
+  document.querySelectorAll("[data-estreno]").forEach((el) => {
+    if (!e.hayEstreno) { el.hidden = true; return; }
+    const molde = el.getAttribute("data-estreno") || "{cuando} entramos a La Nave.";
+    el.textContent = molde
+      .replace("{cuando}", e.estrenoCuando)
+      .replace("{entramos}", e.estrenoHoy ? "entramos" : "entramos");
+    el.hidden = false;
+  });
+  const sello = document.querySelector("[data-estreno-sello]");
+  if (sello && e.hayEstreno) sello.textContent = e.estrenoHoy ? "Hoy se revela" : e.estrenoCuando + " se revela";
+}
+
 /* — Chips del hero — */
 export function iniciarChips() {
   const chipAvance = document.getElementById("js-chip-avance");
@@ -146,6 +169,7 @@ export function iniciarChips() {
       }
     }
     if (heroFill) heroFill.style.width = e.pct + "%";
+    pintaEstreno(e);
   }
 
   pinta();
