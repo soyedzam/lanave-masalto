@@ -146,6 +146,22 @@ function pintaEstreno(e) {
       .replace("{entramos}", e.estrenoHoy ? "entramos" : "entramos");
     el.hidden = false;
   });
+  /* El velo cae solo: si config.carpa trae un archivo, el hito deja de ser una carpa
+     velada y pasa a ser la foto real. Mientras no haya foto, no se inventa ninguna. */
+  const velo = document.querySelector(".velo-carpa");
+  const archivo = String((window.LANAVE || {}).carpa || "").trim();
+  if (velo && archivo) {
+    const img = document.createElement("img");
+    img.src = "assets/" + archivo;
+    img.alt = "La Nave levantada: la carpa de la comunidad";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.className = "velo-revelado";
+    velo.replaceWith(img);
+    const s2 = document.querySelector("[data-estreno-sello]");
+    if (s2) s2.remove();
+  }
+
   const sello = document.querySelector("[data-estreno-sello]");
   if (sello && e.hayEstreno) sello.textContent = e.estrenoHoy ? "Hoy se revela" : e.estrenoCuando + " se revela";
 }

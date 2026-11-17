@@ -1806,3 +1806,6 @@ html.lb-lock { overflow: hidden; }
 @media (max-width: 640px) {
   .obra-tira { grid-auto-columns: 72vw; }
 }
+
+/* el velo caido: la foto real ocupa exactamente el lugar que tenia la carpa velada */
+.velo-revelado { width: 100%; height: 100%; object-fit: cover; display: block; }

@@ -13,6 +13,13 @@ window.LANAVE = {
   // 12 filas de 18 + puerta 5+5).
   meta: 250,
 
+  // — La foto de la carpa, cuando exista —
+  // VACÍO = el velo de la línea de tiempo sigue puesto («aún no se revela»).
+  // Al poner aquí el nombre de un archivo de assets/, el velo CAE solo: ese hito
+  // pasa a mostrar la foto real. No se toca HTML, no se toca copy.
+  // La pieza del culto usa su propio archivo fijo: assets/carpa-nueva.jpg
+  carpa: "",
+
   // — Estreno de La Nave (el día que la comunidad entra) —
   // VACÍO = no se anuncia nada. Con fecha "AAAA-MM-DD", la pantalla del culto
   // dice "El <día> <n> entramos a La Nave" y, ese mismo día, "Hoy entramos".
