@@ -1809,3 +1809,26 @@ html.lb-lock { overflow: hidden; }
 
 /* el velo caido: la foto real ocupa exactamente el lugar que tenia la carpa velada */
 .velo-revelado { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* la obra en movimiento · 17·nov·2026 — solo se reproduce lo que se ve */
+.obra-mov {
+  margin-top: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.obra-mov video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--carbon) 12%, transparent);
+}
+.obra-mov figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bronce);
+}

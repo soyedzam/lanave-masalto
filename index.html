@@ -557,6 +557,19 @@
         </ol>
         <p class="obra-pie">Once días del pasto a la plataforma lista.</p>
 
+        <div class="obra-mov">
+          <figure>
+            <video src="assets/obra-mov-01.mp4" poster="assets/obra-mov-01.jpg" muted loop playsinline preload="none"
+                   aria-label="Un minicargador acarrea piedra en el terreno de La Nave"></video>
+            <figcaption>Acarreando piedra.</figcaption>
+          </figure>
+          <figure>
+            <video src="assets/obra-mov-02.mp4" poster="assets/obra-mov-02.jpg" muted loop playsinline preload="none"
+                   aria-label="Un rodillo compacta el terreno de La Nave"></video>
+            <figcaption>Compactando el suelo.</figcaption>
+          </figure>
+        </div>
+
         <article class="ev-acta" id="js-ev-acta">
           <p class="ev-acta-fecha">8 de julio de 2026</p>
           <h3 class="ev-acta-titulo">Anticipo de la estructura</h3>
@@ -903,5 +916,21 @@
 
   <script src="assets/config.js"></script>
   <script type="module" src="assets/main.js"></script>
+<script>
+(function () {
+  var quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var videos = [].slice.call(document.querySelectorAll(".obra-mov video"));
+  if (!videos.length) return;
+  if (quieto || !("IntersectionObserver" in window)) { videos.forEach(function (v) { v.preload = "metadata"; v.setAttribute("controls", ""); }); return; }
+  var ojo = new IntersectionObserver(function (filas) {
+    filas.forEach(function (f) {
+      var v = f.target;
+      if (f.isIntersecting) { v.preload = "auto"; var p = v.play(); if (p && p.catch) p.catch(function () { v.setAttribute("controls", ""); }); }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.4 });
+  videos.forEach(function (v) { ojo.observe(v); });
+})();
+</script>
 </body>
 </html>
