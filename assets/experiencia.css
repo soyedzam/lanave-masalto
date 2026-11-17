@@ -1755,3 +1755,54 @@ html.lb-lock { overflow: hidden; }
   color: var(--naranja);
   margin-bottom: 0.9rem;
 }
+
+/* ---------- la obra, en orden · 17·nov·2026 ----------
+   Misma mecánica que la línea de tiempo: rueda en horizontal y es enfocable
+   con teclado (a 390 px desborda, y sin tabindex axe lo marca serious). */
+.obra-label { margin-top: var(--space-block); }
+.obra-tira {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(200px, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 0.7rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bronce) transparent;
+}
+.obra-paso { scroll-snap-align: start; }
+.obra-foto {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--carbon) 8%, transparent);
+}
+.obra-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.obra-paso figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--carbon) 78%, transparent);
+}
+.obra-fecha {
+  display: block;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--bronce);
+  margin-bottom: 0.25rem;
+}
+.obra-pie {
+  margin-top: 1.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 0.8rem + 1.1vw, 1.9rem);
+  font-style: italic;
+  color: var(--naranja);
+}
+@media (max-width: 640px) {
+  .obra-tira { grid-auto-columns: 72vw; }
+}

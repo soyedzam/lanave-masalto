@@ -59,6 +59,19 @@ const HITOS = [
   { img: 'assets/ya-no-cabemos.jpg',    titulo: 'Hoy',                 pie: 'Dos cultos cada domingo, y ya no cabemos.', vert: true },
 ].map(h => ({ ...h, data: b64(h.img, 'image/jpeg') }));
 
+/* La obra: lo que de verdad existe hoy. No hay carpa en la media (verificado el
+   17·nov: lo mas avanzado es el terreno nivelado del 13·nov), y eso no es un hueco,
+   es la historia del suelo — el primer pedazo de tierra donde la comunidad puede
+   clavar algo despues de anos en lugares prestados. */
+const OBRA = [
+  { img: 'assets/obra-01.jpg', fecha: '2 de noviembre',  linea: 'Midiendo el terreno, todavía con pasto.',        vert: false },
+  { img: 'assets/obra-02.jpg', fecha: '6 de noviembre',  linea: 'El acero de la primera zapata.',                  vert: true  },
+  { img: 'assets/obra-03.jpg', fecha: '11 de noviembre', linea: 'La cimbra, lista para el colado.',                vert: true  },
+  { img: 'assets/obra-04.jpg', fecha: '12 de noviembre', linea: 'Zapata colada, con sus anclas.',                  vert: true  },
+  { img: 'assets/obra-05.jpg', fecha: '13 de noviembre', linea: 'El terreno nivelado. Aquí es.',                   vert: false },
+].filter(o => fs.existsSync(path.join(RAIZ, o.img)))
+ .map(o => ({ ...o, data: b64(o.img, 'image/jpeg') }));
+
 /* El acto de la carpa entra SOLO cuando haya foto real. Mientras no exista, no se
    proyecta un hueco ni un texto de relleno: la pieza se queda sin ese acto. */
 const CARPA = fs.existsSync(path.join(RAIZ, 'assets/carpa-nueva.jpg'))
@@ -100,6 +113,24 @@ HITOS.forEach((h) => {
          <div class="rotulo-bajo"><h2>${h.titulo}</h2><p class="hito-pie">${h.pie}</p></div>
        </section>`);
 });
+
+if (OBRA.length) {
+  actos.push(`<section class="acto acto-rotulo" data-dur="3800"><div class="centro">
+    <p class="label">Aquí es</p></div></section>`);
+  OBRA.forEach((o) => {
+    actos.push(o.vert
+      ? `<section class="acto acto-hito acto-split" data-dur="3600">
+           <div class="split-txt"><p class="hito-num">${o.fecha}</p><h2 class="obra-h">${o.linea}</h2></div>
+           <div class="split-img"><img src="${o.data}" alt=""></div>
+         </section>`
+      : `<section class="acto acto-hito" data-dur="4200">
+           <img class="fondo" src="${o.data}" alt="">
+           <div class="rotulo-bajo"><p class="hito-num">${o.fecha}</p><h2>${o.linea}</h2></div>
+         </section>`);
+  });
+  actos.push(`<section class="acto acto-rotulo" data-dur="5200"><div class="centro">
+    <p class="verso">Once días del pasto<em>a la plataforma lista.</em></p></div></section>`);
+}
 
 if (CARPA) actos.push(`<section class="acto acto-carpa" data-dur="7000">
   <img class="fondo fondo-limpio" src="${CARPA}" alt=""></section>`);
@@ -152,6 +183,7 @@ h2{font-family:var(--display);font-weight:600;font-size:clamp(3rem, 1rem + 6vw, 
 .hito-pie{margin-top:1.2vh;font-size:clamp(1.1rem, .4rem + 1.5vw, 2.4rem);font-weight:500;
   color:color-mix(in srgb, var(--hueso) 80%, transparent)}
 .hito-num{color:var(--naranja);font-size:1.6vw;margin-bottom:1vh}
+.obra-h{font-size:clamp(2.2rem, .9rem + 3.6vw, 5.4rem);line-height:1.08}
 .acto-split{grid-template-columns:1fr 38%;gap:4vw;padding:0 0 0 7vw;place-items:center stretch}
 .split-txt{align-self:center;text-align:left}
 .split-img{position:relative;height:100%;overflow:hidden}
@@ -269,4 +301,5 @@ fs.writeFileSync(SALIDA, html);
 console.log(`pantalla escrita: ${SALIDA} · ${Math.round(html.length / 1024)} KB · ${actos.length} actos`);
 console.log(`corte inyectado: ${D.tomados} de ${D.meta} (${D.pct}%) · siguiente #${D.siguiente} · corte ${D.fechaCorte}`);
 console.log(`fachada: ${celdas.celdas.length} celdas extraidas de muro.js${CARPA ? '' : ' · SIN acto de la carpa: falta assets/carpa-nueva.jpg'}`);
+console.log(`obra: ${OBRA.length} tomas fechadas`);
 if (estrenoFrase) console.log(`estreno: "${estrenoFrase}"`);
