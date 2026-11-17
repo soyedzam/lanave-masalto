@@ -13,6 +13,11 @@ window.LANAVE = {
   // 12 filas de 18 + puerta 5+5).
   meta: 250,
 
+  // — Estreno de La Nave (el día que la comunidad entra) —
+  // VACÍO = no se anuncia nada. Con fecha "AAAA-MM-DD", la pantalla del culto
+  // dice "El <día> <n> entramos a La Nave" y, ese mismo día, "Hoy entramos".
+  estreno: "2026-11-22",   // confirmado por Ed: lo dijo el pastor en el culto del 15·nov
+
   // — Cierre de la causa —
   // VACÍO = la causa sigue abierta y NO se muestra plazo en ningún lado
   // (ni cuenta regresiva, ni "días", ni "ritmo", ni la barra de zarpe).
